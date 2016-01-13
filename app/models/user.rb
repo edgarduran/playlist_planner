@@ -8,7 +8,7 @@ class User < ActiveRecord::Base
     user.user_name      = oauth.info.id
     user.image          = oauth.info.images.first.url
     user.token          = oauth.credentials.token
-    user.referesh_token = oauth.credentials.referesh_token
+    user.refresh_token  = oauth.credentials.refresh_token
     user.save
 
     user
