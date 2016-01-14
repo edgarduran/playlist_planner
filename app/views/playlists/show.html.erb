@@ -1,5 +1,14 @@
-<h2>Show</h2>
+<h2>Playlist: <%= @playlist.name %></h2>
 
-<h4> <%= @playlist.name %></h4>
+<ul>
+  <h4>Tracks</h4>
+  <% @songs.each do |song| %>
+    <li>
+      <h5> <%= song[:name] %></h5>
+      <h6> <%= song[:artists] %></h6>
+      <%= song[:duration] %>
+    </li>
+  <% end %>
+</ul>
 
 <%= link_to "Rename Playlist", edit_playlist_path(@playlist, pl_id: @playlist.id, user: current_user.user_name) %>
