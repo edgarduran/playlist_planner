@@ -25,6 +25,11 @@ class PlaylistsController < ApplicationController
     redirect_to playlists_path
   end
 
+  def destroy
+    # no method in RSpotify but maybe can use AR or just or look up
+    # how gem is built. Maybe find_playlist.desroy ?
+  end
+
   private
 
   def spotify_service
