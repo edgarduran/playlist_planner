@@ -13,4 +13,8 @@ class LoggedInUserCanViewPlaylistsPageTest < ActionDispatch::IntegrationTest
     assert page.has_link?("Create New Playlist")
   end
 
+  test 'logged in user can view all playlists' do
+    skip
+  end
+
 end
