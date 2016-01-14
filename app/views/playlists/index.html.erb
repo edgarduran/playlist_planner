@@ -2,4 +2,11 @@
 
 <h2> <%= current_user.user_name %></h2>
 
-<%= link_to "Create New Playlist", new_playlist_path  %>
+<%= link_to "Create New Playlist", new_playlist_path  %><br>
+
+<ul>
+  <% @playlists.each do |list| %>
+    <li> <%= list.name %></li>
+    <%= link_to "View/Edit Details", playlist_path(list, pl_id: list.id, user: current_user.user_name) %>
+  <% end %>
+</ul>

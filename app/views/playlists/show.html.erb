@@ -1,0 +1,5 @@
+<h2>Show</h2>
+
+<h4> <%= @playlist.name %></h4>
+
+<%= link_to "Rename Playlist", edit_playlist_path(@playlist, pl_id: @playlist.id, user: current_user.user_name) %>
