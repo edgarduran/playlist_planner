@@ -1,5 +1,15 @@
 <h2>Playlist: <%= @playlist.name %></h2>
-
+<% binding.pry %>
+  <div>
+    <h5>Contribute to Playlist</h5>
+    <%= form_tag songs_path, method: :get do %>
+      <%= label_tag :query %>
+      <%= text_field_tag :query %>
+      <%= hidden_field_tag(:pl_id, @playlist.id) %>
+      <%= hidden_field_tag(:user, @playlist.owner.id) %>
+      <%= submit_tag "Find Track" %>
+    <% end %>
+  </div>
 <ul>
   <h4>Tracks</h4>
   <% @songs.each do |song| %>

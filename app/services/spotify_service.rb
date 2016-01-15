@@ -7,9 +7,6 @@ class SpotifyService
 
   def playlists
     client.playlists
-    # client.playlists.map do |client_playlist|
-    #   Playlist.new(client_playlist)
-    # end
   end
 
   def new_playlist(name)
@@ -23,6 +20,9 @@ class SpotifyService
   def songs(playlist)
     raw_data = playlist.tracks
     clean_up(raw_data)
+    # client.playlist.map do |client_playlist|
+    #   Playlist.new(client_playlist)
+    # end
   end
 
   def rename_playlist(params)
@@ -36,6 +36,11 @@ class SpotifyService
 
   def get_artists(song)
     song.map { |song| song.name }
+  end
+
+  def song_search(query)
+    tracks = RSpotify::Track.search(query, limit: 20, market: "US")
+    clean_up(tracks)
   end
 
 end
