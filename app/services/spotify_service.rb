@@ -53,10 +53,18 @@ class SpotifyService
   end
 
   def user_playlists(params)
-     a = client.playlists(limit: 50, offset: 0)
-     a.delete_if { |track| track.id != params[:pl_id] }
-     track = RSpotify::Track.find(params[:song_id])
-     a.add_tracks!(track, position: nil)
+    #  a = client.playlists(limit: 50, offset: 0)
+    #  a.delete_if { |track| track.id != params[:pl_id] }
+    array = []
+    pl =  RSpotify::Playlist.find(params[:user], params[:pl_id])
+    track = RSpotify::Track.find(params[:song_id])
+    array << track
+    array.add_tracks!(track)
+  end
+
+  def add_track(pl, track)
+    track = [] << track
+    pl.add_tracks!(track)
   end
 
   # def add_song(params)

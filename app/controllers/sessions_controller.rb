@@ -8,13 +8,13 @@ class SessionsController < ApplicationController
       redirect_to landing_path(user)
 
     else
-      redirect_to root_path
+      redirect_to "/"
     end
   end
 
   def destroy
     session.clear
-    redirect_to root_path
+    redirect_to "/"
   end
 
   private
