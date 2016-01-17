@@ -31,7 +31,7 @@ class SpotifyService
   end
 
   def clean_up(data)
-    data.map { |song| { :name => song.name, :duration => song.duration_ms, :artists => get_artists(song.artists)} }
+    data.map { |song| { :name => song.name, :duration => song.duration_ms, :artists => get_artists(song.artists), :song_id => song.id} }
   end
 
   def get_artists(song)
@@ -42,6 +42,26 @@ class SpotifyService
     tracks = RSpotify::Track.search(query, limit: 20, market: "US")
     clean_up(tracks)
   end
+
+  def find_track(id)
+    RSpotify::Track.find(id)
+  end
+
+  def add_song(params)
+    track = find_track(params[:song_id])
+    RSpotify::Playlist.playlist.add_tracks!(track)
+  end
+
+  def user_playlists(params)
+     a = client.playlists(limit: 50, offset: 0)
+     a.delete_if { |track| track.id != params[:pl_id] }
+     track = RSpotify::Track.find(params[:song_id])
+     a.add_tracks!(track, position: nil)
+  end
+
+  # def add_song(params)
+  #   RSpotify::Playlist.add_tracks!()
+  # end
 
 end
 

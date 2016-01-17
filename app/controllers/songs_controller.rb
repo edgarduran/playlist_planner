@@ -12,6 +12,12 @@ class SongsController < ApplicationController
     # redirect_to playlist_path(pl_id)
   end
 
+  def create
+    spotify_service.user_playlists(params)
+
+    redirect_to playlist_path(pl_id)
+  end
+
   def spotify_service
     SpotifyService.new(session)
   end
