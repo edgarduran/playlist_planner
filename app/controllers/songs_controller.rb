@@ -13,9 +13,10 @@ class SongsController < ApplicationController
   end
 
   def create
-    spotify_service.user_playlists(params)
-
-    redirect_to playlist_path(pl_id)
+    pl = spotify_service.find_playlist(params)
+    track = spotify_service.find_track(params[:song_id])
+    spotify_service.add_track(pl, track)
+    redirect_to playlists_path
   end
 
   def spotify_service
