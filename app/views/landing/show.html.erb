@@ -3,12 +3,13 @@
   <head>
     <meta charset="utf-8">
     <title>Profile Show Page</title>
+    <body background="https://d1a3f4spazzrp4.cloudfront.net/web-fresh/home/map-web@2x.gif">
   </head>
   <body>
     <%= image_tag(current_user.image) %>
-    <h2> <%= current_user.display_name %></h2>
-    <h3> <%= current_user.user_name %></h3>
-    <h4> <%= current_user.email %></h4>
+    <h2 class="white-text"> <%= current_user.display_name %></h2>
+    <h3 class="white-text"> <%= current_user.user_name %></h3>
+    <h4 class="white-text"> <%= current_user.email %></h4>
     <%= link_to "Create and View Playlists", playlists_path %>
   </body>
 </html>

@@ -1,0 +1,16 @@
+<h2>Search Results:</h2>
+<ul>
+  <% @search_results.each do |song| %>
+    <li>
+      <h5> <%= song[:name] %></h5>
+      <%= form_tag songs_path, method: :post do %>
+        <%= hidden_field_tag(:pl_id, params[:pl_id]) %>
+        <%= hidden_field_tag(:user, params[:user]) %>
+        <%= hidden_field_tag(:song_id, song[:song_id]) %>
+        <%= submit_tag "Add to Playlist" %>
+      <% end %>
+      <h6> <%= song[:artists] %></h6>
+      <%= song[:duration] %>
+    </li>
+  <% end %>
+</ul>

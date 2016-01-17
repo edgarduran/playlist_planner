@@ -6,6 +6,7 @@ class PlaylistsController < ApplicationController
 
   def show
     @playlist = spotify_service.find_playlist(params)
+    @songs    = spotify_service.songs(@playlist)
   end
 
   def new
