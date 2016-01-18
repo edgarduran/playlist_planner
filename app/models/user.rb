@@ -5,7 +5,11 @@ class User < ActiveRecord::Base
     user.display_name   = oauth.info.display_name
     user.email          = oauth.info.email
     user.user_name      = oauth.info.id
-    user.image          = oauth.info.images.first.url
+    user.image          = if oauth.info.images.first == nil
+                            "http://www.nilayaheights.com/wp-content/themes/nilayaheights/images/profile-default-male.png"
+                          else
+                            oauth.info.images.first.url
+                          end
     user.token          = oauth.credentials.token
     user.refresh_token  = oauth.credentials.refresh_token
     user.save

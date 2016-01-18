@@ -9,5 +9,6 @@ Rails.application.routes.draw do
   resources :landing, only: [:index, :show]
   resources :playlists, only: [:index, :show, :new, :create, :edit, :update]
   resources :songs, only: [:index, :new, :create]
+  resources :mailers, only: [:create]
 
 end
