@@ -16,12 +16,5 @@ class MailService
     client.send(mail)
   end
 
-  # # As a hash
-  # client = SendGrid::Client.new(api_key: 'YOUR_SENDGRID_APIKEY')
-  #
-  # # Or as a block
-  # client = SendGrid::Client.new do |c|
-  #   c.api_key = 'YOUR_SENDGRID_APIKEY'
-  # end
 
 end

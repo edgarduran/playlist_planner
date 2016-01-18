@@ -7,7 +7,13 @@
 </head>
 <body>
 <%= render "partials/nav" %>
+<div class="container">
+  <% flash.each do |type, msg| %>
+    <%= content_tag :div, sanitize(msg), class: "flash_#{type} hidden" %>
+    <body onload="Materialize.toast('<%=msg%>', 1500)">
+  <% end %>
 <%= yield %>
+</div>
 <!-- Compiled and minified CSS -->
 <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.3/css/materialize.min.css">
