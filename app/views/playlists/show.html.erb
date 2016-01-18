@@ -1,5 +1,16 @@
 
 <h2>Playlist: <%= @playlist.name %></h2>
+
+<div>
+  <h5>Email Playlist</h5>
+  <%= form_tag mailers_path, method: :post do %>
+  <%= label_tag :email %>
+  <%= text_field_tag :email %>
+  <%= submit_tag "Send Email", class: "btn" %>
+  <% end %>
+</div><br>
+
+
   <div>
     <h5>Contribute to Playlist</h5>
     <%= form_tag songs_path, method: :get do %>
