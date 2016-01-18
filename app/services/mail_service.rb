@@ -3,7 +3,7 @@ class MailService
   attr_reader :client
 
   def initialize(api_key)
-    @client = SendGrid::Client.new(api_key)
+    @client = SendGrid::Client.new(api_key: ENV['YOUR_SENDGRID_APIKEY'])
   end
 
   def send_email(params)
