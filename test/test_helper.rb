@@ -19,7 +19,6 @@ class ActionDispatch::IntegrationTest
 
   def teardown
     reset_session!
-    OmniAuth.config.mock_auth[:spotify] = nil
   end
 
   def stub_omniauth

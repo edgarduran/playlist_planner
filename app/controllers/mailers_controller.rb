@@ -6,6 +6,6 @@ class MailersController < ApplicationController
   end
 
   def mail_service
-    MailService.new(api_key: 'YOUR_SENDGRID_APIKEY')
+    MailService.new
   end
 end
