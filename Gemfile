@@ -46,6 +46,12 @@ group :development, :test do
   gem 'launchy'
 end
 
+group :test do
+  gem 'simplecov'
+  gem 'webmock'
+  gem 'vcr'
+end
+
 group :production do
   gem 'rails_12factor'
 end

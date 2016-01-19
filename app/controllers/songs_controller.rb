@@ -8,8 +8,6 @@ class SongsController < ApplicationController
   end
 
   def new
-    # add song to playlist
-    # redirect_to playlist_path(pl_id)
   end
 
   def create

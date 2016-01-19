@@ -1,8 +1,8 @@
 class PlaylistsController < ApplicationController
 
   def index
-    @playlists ||= spotify_service.playlists
-    # playlist.delete_if { |playlist| !playlist.name.include?("Party Planner")}
+    playlists = spotify_service.playlists
+    @playlists = playlists.delete_if { |playlist| !playlist.name.include?("PLP")}
   end
 
   def show
