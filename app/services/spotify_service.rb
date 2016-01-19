@@ -30,10 +30,12 @@ class SpotifyService
     list.change_details!(name: params[:name])
   end
 
+  # Extract to poro
   def clean_up(data)
     data.map { |song| { :name => song.name, :duration => song.duration_ms, :artists => get_artists(song.artists), :song_id => song.id} }
   end
 
+  #Extract to poro
   def get_artists(song)
     song.map { |song| song.name }
   end
@@ -47,29 +49,10 @@ class SpotifyService
     RSpotify::Track.find(id)
   end
 
-  def add_song(params)
-    track = find_track(params[:song_id])
-    RSpotify::Playlist.playlist.add_tracks!(track)
-  end
-
-  def user_playlists(params)
-    #  a = client.playlists(limit: 50, offset: 0)
-    #  a.delete_if { |track| track.id != params[:pl_id] }
-    array = []
-    pl =  RSpotify::Playlist.find(params[:user], params[:pl_id])
-    track = RSpotify::Track.find(params[:song_id])
-    array << track
-    array.add_tracks!(track)
-  end
-
   def add_track(pl, track)
     track = [] << track
     pl.add_tracks!(track)
   end
-
-  # def add_song(params)
-  #   RSpotify::Playlist.add_tracks!()
-  # end
 
 end
 
