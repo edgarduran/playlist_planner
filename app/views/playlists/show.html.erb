@@ -1,4 +1,3 @@
-
 <h2>Playlist: <%= @playlist.name %></h2>
 
 <div>
@@ -29,6 +28,7 @@
       <h6> <%= song[:artists] %></h6>
       <%= song[:duration] %>
     </li>
+    <%= link_to "Remove From Playlist", song_path(song, song_id: song[:song_id], pl_id: @playlist.id, user: current_user.user_name), method: :delete, class: "btn" %>
   <% end %>
 </ul>
 

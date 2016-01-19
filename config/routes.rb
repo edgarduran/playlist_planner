@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   get '/logout', to: 'sessions#destroy'
   resources :landing, only: [:index, :show]
   resources :playlists, only: [:index, :show, :new, :create, :edit, :update]
-  resources :songs, only: [:index, :new, :create]
+  resources :songs, only: [:index, :new, :create, :destroy]
   resources :mailers, only: [:create]
 
 end
