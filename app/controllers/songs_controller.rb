@@ -17,6 +17,13 @@ class SongsController < ApplicationController
     redirect_to playlists_path
   end
 
+  def destroy
+    pl = spotify_service.find_playlist(params)
+    track = spotify_service.find_track(params[:song_id])
+    spotify_service.remove_track(pl, track)
+    redirect_to playlists_path
+  end
+
   def spotify_service
     SpotifyService.new(session)
   end

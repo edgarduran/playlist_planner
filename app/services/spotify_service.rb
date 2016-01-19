@@ -54,6 +54,11 @@ class SpotifyService
     pl.add_tracks!(track)
   end
 
+  def remove_track(pl, track)
+    track = [] << track
+    pl.remove_tracks!(track)    
+  end
+
 end
 
 # class Playlist
