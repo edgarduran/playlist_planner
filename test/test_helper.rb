@@ -26,21 +26,49 @@ class ActionDispatch::IntegrationTest
   def stub_omniauth
     OmniAuth.config.test_mode = true
 
-    OmniAuth.config.mock_auth[:spotify] = OmniAuth::AuthHash.new({
-      provider: 'spotify',
-      info: {
-        display_name: "Edgar Duran",
-        email: "edgarduran86@gmail.com",
-        id: "eduran1",
-        images:      [{"height"=>nil,
-                       "url"=>"https://scontent.xx.fbcdn.net/hprofile-xpa1/v/t1.0-1/p200x200/12316497_10103623928784563_8129502248557921265_n.jpg?oh=2d87926f154e22035c51b7418cb38d52&oe=57493568",
-                       "width"=>nil}],
-                     },
-        credentials: {
-          token:  "BQDNFf7RRRhDghcLNpfQcobPjqfMpP_YM-C1S5NExZNPhEz1HvaxkdLIaV8gI7XjTjuiXmsYpthxnZKRYBYgWsf8GkT0MeutrhqvwbjVbk20dH-7KG450q40g6t2kaVsG2ARAAFXtoTplMgi4-6fqRMycNZT7rD3aVnd3StWWC8jjZica10PPj-fOBL--dCFVkKp-lUmBVIw27yjRSDl73oNdegP-lq2H15dARxePAn4QcQ3eF9_KTOLUqEqtul05IZ4-7p6EH-R-hh7y8fykiZvo5Y_mj6Kg0FU65JaQsp3rPfB",
-          refresh_token:  "AQC3mwMkMC-sQeUfmYoN4rYi7AJdgjx2XNTh2nLqG6dYR77rIMC3CcOUmsmIfwUDv-h0LacfamO_yf-7hU5HKNCGyuyi-JVZIqcj3E0tNnIZipT7QS287lII6Bq7096aE3g"
-      }
-      })
-    end
-
+    OmniAuth.config.mock_auth[:spotify] = OmniAuth::AuthHash.new(
+    {"provider"=>"spotify",
+      "uid"=>nil,
+      "info"=>
+      {"birthdate"=>"1986-01-24",
+        "country"=>"US",
+        "display_name"=>"Edgar Duran",
+        "email"=>"edgarduran86@gmail.com",
+        "external_urls"=>{"spotify"=>"https://open.spotify.com/user/eduran1"},
+        "followers"=>{"href"=>nil, "total"=>1},
+        "href"=>"https://api.spotify.com/v1/users/eduran1",
+        "id"=>"eduran1",
+        "images"=>
+        [{"height"=>nil,
+          "url"=>"https://scontent.xx.fbcdn.net/hprofile-xpa1/v/t1.0-1/p200x200/12316497_10103623928784563_8129502248557921265_n.jpg?oh=2d87926f154e22035c51b7418cb38d52&oe=57493568",
+          "width"=>nil}],
+          "product"=>"premium",
+          "type"=>"user",
+          "uri"=>"spotify:user:eduran1"},
+          "credentials"=>
+          {"token"=>
+            "BQBo6kDrGvX3K7P4njwKQDAP9csxFbKyaSqMMMYVsPDnV0YAVCRhZvgfXIJ6OCwnIugodBNGuzuXbTtTfZl4RoNkBqOITbck3uZOyEsrxbWeAhY0KPc_YyJjz9DAntwPf_iI1GPf-Wmt60dkAVexJruL_6Bon5NbQwdp4PU2Xa-BJRPwymlbX4XziBVLi54PDRVDGdQz8q2xmW4NjiJsBLMMaP6c5V_h8GJpd4bl9wFTz5LtSZG1btRukXOtyvGiTgkE4IuHzZr8OQ-kecol30cUUl41Iuso0y61Nn0gdEtQCGhm",
+            "refresh_token"=>"AQDgkjqHaz5KPSO1xUAwocMUvyd2k3Pkab6wLjCOZCqb1sQxTG98XYhHsrchMAcQxVSrZJl6XZLIOFjLMdQshdlnuTcerokr-4fAEW7pLNiCynMltAo611rTfZGJUaDEV3M",
+            "expires_at"=>1453169555,
+            "expires"=>true},
+            "extra"=>{}}
+      )
   end
+
+
+
+  def login_user
+    visit "/"
+
+    assert_equal 200, page.status_code
+
+    click_link "Sign in with Spotify"
+
+    user = User.last
+    assert_equal user_path(user.id), current_path
+    assert page.has_content?("Edgar Duran")
+    assert page.has_content?("eduran1")
+    assert page.has_link?("Logout")
+  end
+
+end
