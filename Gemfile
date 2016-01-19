@@ -44,7 +44,12 @@ group :development, :test do
   gem 'capybara'
   gem 'mocha'
   gem 'launchy'
+end
+
+group :test do
   gem 'simplecov'
+  gem 'webmock'
+  gem 'vcr'
 end
 
 group :production do

@@ -14,7 +14,7 @@
       <img src="./assets/0.10.0/loading.gif" alt="loading"/>
     </div>
     <div id="wrapper" style="display:none;">
-      <div class="timestamp">Generated <abbr class="timeago" title="2016-01-18T19:07:58-07:00">2016-01-18T19:07:58-07:00</abbr></div>
+      <div class="timestamp">Generated <abbr class="timeago" title="2016-01-18T19:51:44-07:00">2016-01-18T19:51:44-07:00</abbr></div>
       <ul class="group_tabs"></ul>
 
       <div id="content">
@@ -25,7 +25,7 @@
      covered at
      <span class="covered_strength">
        <span class="green">
-         1.93
+         1.48
        </span>
     </span> hits/line)
   </h2>
@@ -57,7 +57,7 @@
         <td>7</td>
         <td>6</td>
         <td>1</td>
-        <td>8.1</td>
+        <td>4.4</td>
       </tr>
       
       <tr>
@@ -77,7 +77,7 @@
         <td>19</td>
         <td>12</td>
         <td>7</td>
-        <td>0.7</td>
+        <td>0.6</td>
       </tr>
       
       <tr>
@@ -87,7 +87,7 @@
         <td>14</td>
         <td>13</td>
         <td>1</td>
-        <td>3.0</td>
+        <td>2.5</td>
       </tr>
       
       <tr>
@@ -157,7 +157,7 @@
         <td>13</td>
         <td>12</td>
         <td>1</td>
-        <td>4.0</td>
+        <td>3.2</td>
       </tr>
       
       <tr>
@@ -183,7 +183,7 @@
      covered at
      <span class="covered_strength">
        <span class="green">
-         2.67
+         1.87
        </span>
     </span> hits/line)
   </h2>
@@ -215,7 +215,7 @@
         <td>7</td>
         <td>6</td>
         <td>1</td>
-        <td>8.1</td>
+        <td>4.4</td>
       </tr>
       
       <tr>
@@ -235,7 +235,7 @@
         <td>19</td>
         <td>12</td>
         <td>7</td>
-        <td>0.7</td>
+        <td>0.6</td>
       </tr>
       
       <tr>
@@ -245,7 +245,7 @@
         <td>14</td>
         <td>13</td>
         <td>1</td>
-        <td>3.0</td>
+        <td>2.5</td>
       </tr>
       
     </tbody>
@@ -260,7 +260,7 @@
      covered at
      <span class="covered_strength">
        <span class="green">
-         4.0
+         3.2
        </span>
     </span> hits/line)
   </h2>
@@ -292,7 +292,7 @@
         <td>13</td>
         <td>12</td>
         <td>1</td>
-        <td>4.0</td>
+        <td>3.2</td>
       </tr>
       
     </tbody>
@@ -590,8 +590,8 @@
           <code class="ruby">  def current_user</code>
         </li>
       
-        <li class="covered" data-hits="52" data-linenumber="9">
-          <span class="hits">52</span>
+        <li class="covered" data-hits="26" data-linenumber="9">
+          <span class="hits">26</span>
           
           <code class="ruby">    @current_user ||= User.find(session[:user_id]) if session[:user_id]</code>
         </li>
@@ -740,8 +740,8 @@
           <code class="ruby">  def index</code>
         </li>
       
-        <li class="covered" data-hits="2" data-linenumber="4">
-          <span class="hits">2</span>
+        <li class="covered" data-hits="1" data-linenumber="4">
+          <span class="hits">1</span>
           
           <code class="ruby">    @playlists ||= spotify_service.playlists</code>
         </li>
@@ -944,8 +944,8 @@
           <code class="ruby">  def spotify_service</code>
         </li>
       
-        <li class="covered" data-hits="2" data-linenumber="38">
-          <span class="hits">2</span>
+        <li class="covered" data-hits="1" data-linenumber="38">
+          <span class="hits">1</span>
           
           <code class="ruby">    SpotifyService.new(session)</code>
         </li>
@@ -1004,32 +1004,32 @@
           <code class="ruby">  def create</code>
         </li>
       
-        <li class="covered" data-hits="5" data-linenumber="4">
-          <span class="hits">5</span>
+        <li class="covered" data-hits="4" data-linenumber="4">
+          <span class="hits">4</span>
           
           <code class="ruby">    user = User.find_or_create_from_oauth(oauth)</code>
         </li>
       
-        <li class="covered" data-hits="5" data-linenumber="5">
-          <span class="hits">5</span>
+        <li class="covered" data-hits="4" data-linenumber="5">
+          <span class="hits">4</span>
           
           <code class="ruby">    if user</code>
         </li>
       
-        <li class="covered" data-hits="5" data-linenumber="6">
-          <span class="hits">5</span>
+        <li class="covered" data-hits="4" data-linenumber="6">
+          <span class="hits">4</span>
           
           <code class="ruby">      session[:user_id] = user.id</code>
         </li>
       
-        <li class="covered" data-hits="5" data-linenumber="7">
-          <span class="hits">5</span>
+        <li class="covered" data-hits="4" data-linenumber="7">
+          <span class="hits">4</span>
           
           <code class="ruby">      session[:spotify_hash] = oauth</code>
         </li>
       
-        <li class="covered" data-hits="5" data-linenumber="8">
-          <span class="hits">5</span>
+        <li class="covered" data-hits="4" data-linenumber="8">
+          <span class="hits">4</span>
           
           <code class="ruby">      redirect_to landing_path(user)</code>
         </li>
@@ -1112,8 +1112,8 @@
           <code class="ruby">  def oauth</code>
         </li>
       
-        <li class="covered" data-hits="10" data-linenumber="22">
-          <span class="hits">10</span>
+        <li class="covered" data-hits="8" data-linenumber="22">
+          <span class="hits">8</span>
           
           <code class="ruby">    request.env[&#39;omniauth.auth&#39;]</code>
         </li>
@@ -1352,32 +1352,32 @@
           <code class="ruby">  def self.find_or_create_from_oauth(oauth)</code>
         </li>
       
-        <li class="covered" data-hits="5" data-linenumber="4">
-          <span class="hits">5</span>
+        <li class="covered" data-hits="4" data-linenumber="4">
+          <span class="hits">4</span>
           
           <code class="ruby">    user = User.find_or_create_by(provider: oauth.provider, user_name: oauth.info.id)</code>
         </li>
       
-        <li class="covered" data-hits="5" data-linenumber="5">
-          <span class="hits">5</span>
+        <li class="covered" data-hits="4" data-linenumber="5">
+          <span class="hits">4</span>
           
           <code class="ruby">    user.display_name   = oauth.info.display_name</code>
         </li>
       
-        <li class="covered" data-hits="5" data-linenumber="6">
-          <span class="hits">5</span>
+        <li class="covered" data-hits="4" data-linenumber="6">
+          <span class="hits">4</span>
           
           <code class="ruby">    user.email          = oauth.info.email</code>
         </li>
       
-        <li class="covered" data-hits="5" data-linenumber="7">
-          <span class="hits">5</span>
+        <li class="covered" data-hits="4" data-linenumber="7">
+          <span class="hits">4</span>
           
           <code class="ruby">    user.user_name      = oauth.info.id</code>
         </li>
       
-        <li class="covered" data-hits="5" data-linenumber="8">
-          <span class="hits">5</span>
+        <li class="covered" data-hits="4" data-linenumber="8">
+          <span class="hits">4</span>
           
           <code class="ruby">    user.image          = if oauth.info.images.first == nil</code>
         </li>
@@ -1394,8 +1394,8 @@
           <code class="ruby">                          else</code>
         </li>
       
-        <li class="covered" data-hits="5" data-linenumber="11">
-          <span class="hits">5</span>
+        <li class="covered" data-hits="4" data-linenumber="11">
+          <span class="hits">4</span>
           
           <code class="ruby">                            oauth.info.images.first.url</code>
         </li>
@@ -1406,20 +1406,20 @@
           <code class="ruby">                          end</code>
         </li>
       
-        <li class="covered" data-hits="5" data-linenumber="13">
-          <span class="hits">5</span>
+        <li class="covered" data-hits="4" data-linenumber="13">
+          <span class="hits">4</span>
           
           <code class="ruby">    user.token          = oauth.credentials.token</code>
         </li>
       
-        <li class="covered" data-hits="5" data-linenumber="14">
-          <span class="hits">5</span>
+        <li class="covered" data-hits="4" data-linenumber="14">
+          <span class="hits">4</span>
           
           <code class="ruby">    user.refresh_token  = oauth.credentials.refresh_token</code>
         </li>
       
-        <li class="covered" data-hits="5" data-linenumber="15">
-          <span class="hits">5</span>
+        <li class="covered" data-hits="4" data-linenumber="15">
+          <span class="hits">4</span>
           
           <code class="ruby">    user.save</code>
         </li>
@@ -1430,8 +1430,8 @@
           <code class="ruby"></code>
         </li>
       
-        <li class="covered" data-hits="5" data-linenumber="17">
-          <span class="hits">5</span>
+        <li class="covered" data-hits="4" data-linenumber="17">
+          <span class="hits">4</span>
           
           <code class="ruby">    user</code>
         </li>
@@ -1490,8 +1490,8 @@
           <code class="ruby">  def initialize(session)</code>
         </li>
       
-        <li class="covered" data-hits="2" data-linenumber="5">
-          <span class="hits">2</span>
+        <li class="covered" data-hits="1" data-linenumber="5">
+          <span class="hits">1</span>
           
           <code class="ruby">    @client = RSpotify::User.new(session[:spotify_hash])</code>
         </li>
@@ -1514,8 +1514,8 @@
           <code class="ruby">  def playlists</code>
         </li>
       
-        <li class="covered" data-hits="2" data-linenumber="9">
-          <span class="hits">2</span>
+        <li class="covered" data-hits="1" data-linenumber="9">
+          <span class="hits">1</span>
           
           <code class="ruby">    client.playlists</code>
         </li>
