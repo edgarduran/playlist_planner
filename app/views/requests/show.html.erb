@@ -1,4 +1,14 @@
 <h2>Playlist: <%= @playlist[:pl_name] %></h2>
 
 
-<h5>Contribute to Playlist</h5>
+<div>
+  <h5>Contribute to Playlist</h5>
+  <%= form_tag requests_path, method: :get do %>
+    <%= label_tag :query %>
+    <%= text_field_tag :query %>
+    <%= hidden_field_tag(:pl_id, @playlist[:pl_id]) %>
+    <%= hidden_field_tag(:pl_name, @playlist[:pl_name]) %>
+    <%= hidden_field_tag(:user, @playlist[:user]) %>
+    <%= submit_tag "Find Track" %>
+  <% end %>
+</div>
