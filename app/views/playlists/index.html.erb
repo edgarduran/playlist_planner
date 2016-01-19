@@ -20,7 +20,7 @@
               I am convenient because I require little markup to use effectively.</p>
             </div>
             <div class="card-action">
-              <%= link_to "View/Edit Details", playlist_path(list, pl_id: list.id, user: current_user.user_name, pl_name: list.name) %>
+              <%= link_to "View/Edit Details", playlist_path(list, pl_id: list.id, user: current_user.user_name, pl_name: list.name, user_id: current_user.id) %>
             </div>
           </div>
         </div>

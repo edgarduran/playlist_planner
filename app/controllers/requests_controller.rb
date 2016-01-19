@@ -9,11 +9,29 @@ class RequestsController < ApplicationController
   end
 
   def create
-    binding.pry
+    @request = Request.new( song_name: request_params["song_name"],
+                            song_id: request_params["song_id"],
+                            pl_id: request_params["pl_id"],
+                            user_id: request_params["user_id"].to_i
+                          )
+    if @request.save
+      redirect_to playlists_path
+      flash[:success] = "#{@request.song_name} has been submited for approval"
+    else
+      flash.now[:error] = 'Something went wrong, sorry'
+      redirect_to playlists_path
+    end
   end
 
   def request_service
     RequestService.new
   end
+
+  private
+
+  def request_params
+    params.permit(:song_name, :status, :song_id, :pl_id, :user_id, :user)
+  end
+
 
 end

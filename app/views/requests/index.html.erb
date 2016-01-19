@@ -7,6 +7,8 @@
         <%= hidden_field_tag(:pl_id, params[:pl_id]) %>
         <%= hidden_field_tag(:user, params[:user]) %>
         <%= hidden_field_tag(:song_id, song[:song_id]) %>
+        <%= hidden_field_tag(:song_name, song[:name]) %>
+        <%= hidden_field_tag(:user_id, params[:user_id]) %>
         <%= submit_tag "Submit as request" %>
       <% end %>
       <h6> <%= song[:artists] %></h6>

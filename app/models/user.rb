@@ -1,4 +1,5 @@
 class User < ActiveRecord::Base
+  has_many :requests
 
   def self.find_or_create_from_oauth(oauth)
     user = User.find_or_create_by(provider: oauth.provider, user_name: oauth.info.id)

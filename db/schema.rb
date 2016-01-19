@@ -11,18 +11,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160119174007) do
+ActiveRecord::Schema.define(version: 20160119211834) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "requests", force: :cascade do |t|
-    t.string   "name"
-    t.string   "status"
-    t.string   "song_info"
+    t.string   "song_name"
+    t.string   "status",     default: "pending"
+    t.string   "song_id"
+    t.string   "pl_id"
     t.integer  "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",                     null: false
+    t.datetime "updated_at",                     null: false
   end
 
   add_index "requests", ["user_id"], name: "index_requests_on_user_id", using: :btree
