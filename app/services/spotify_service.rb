@@ -10,7 +10,7 @@ class SpotifyService
   end
 
   def new_playlist(name)
-    client.create_playlist!(name, public: true)
+    client.create_playlist!(name + " Playlist Planner", public: true)
   end
 
   def find_playlist(params)
