@@ -48,13 +48,13 @@
         </tr>
       </thead>
     <% @requests.each do |request| %>
-    <tr id="request_id%>">
+    <tr id="request_id">
       <td class="center-align"><%= request[:song_name] %></td>
       <td>Artist Name</td>
       <td> <%= request[:status] %></td>
       <% if request[:status] == "pending" %>
-        <td> <%= link_to "Decline", request_path(request, :status => 'denied', :playlist => request[:pl_id]), method: :patch, class: "cancel-link" %></td>
-        <td> <%= link_to "Approve", request_path(request, :status => 'approved', :playlist => request[:pl_id]), method: :patch, class: "complete-link" %></td>
+        <td> <%= link_to "Decline", request_path(request, :status => 'denied'), method: :patch, class: "cancel-link" %></td>
+        <td> <%= link_to "Approve", request_path(request, :status => 'approved', :pl_id => request[:pl_id], :user => @playlist.owner.id, :song_id => request[:song_id]), method: :patch, class: "complete-link" %></td>
       <% end %>
     <% end %>
 <% end %>

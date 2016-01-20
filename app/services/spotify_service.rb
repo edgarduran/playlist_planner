@@ -1,4 +1,4 @@
-class SpotifyService
+ class SpotifyService
   attr_reader :client
 
   def initialize(session)
