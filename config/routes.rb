@@ -10,6 +10,6 @@ Rails.application.routes.draw do
   resources :playlists, only: [:index, :show, :new, :create, :edit, :update]
   resources :songs, only: [:index, :new, :create, :destroy]
   resources :mailers, only: [:create]
-  resources :requests, only: [:show, :index, :create]
+  resources :requests, only: [:show, :index, :create, :update]
 
 end

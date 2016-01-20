@@ -23,6 +23,11 @@ class RequestsController < ApplicationController
     end
   end
 
+  def update
+    Order.find(params[:id]).update_attributes(current_status: params[:order_status])
+    redirect_to admin_dashboard_index_path
+  end
+
   def request_service
     RequestService.new
   end
