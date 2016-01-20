@@ -1,12 +1,16 @@
 <h2>Playlist: <%= @playlist.name %></h2>
 <%= link_to "Rename Playlist", edit_playlist_path(@playlist, pl_id: @playlist.id, user: current_user.user_name) %><br>
-
 <div>
   <h5>Email Playlist</h5>
   <%= form_tag mailers_path, method: :post do %>
-  <%= label_tag :email %>
-  <%= text_field_tag :email %>
-  <%= submit_tag "Send Email", class: "btn" %>
+    <%= label_tag :email %>
+    <%= text_field_tag :email %>
+    <%= hidden_field_tag(:pl_id, params[:pl_id]) %>
+    <%= hidden_field_tag(:pl_name, params[:pl_name]) %>
+    <%= hidden_field_tag(:user_id, params[:user_id]) %>
+    <%= hidden_field_tag(:user, params[:user]) %>
+    <%= hidden_field_tag(:rspotify, params[:id]) %>
+    <%= submit_tag "Send Email", class: "btn" %>
   <% end %>
 </div><br>
 
