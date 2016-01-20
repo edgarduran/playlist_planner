@@ -53,8 +53,8 @@
       <td>Artist Name</td>
       <td> <%= request[:status] %></td>
       <% if request[:status] == "pending" %>
-        <td> <%= link_to "Decline", request_path(request, :status => 'denied'), method: :patch, class: "cancel-link" %></td>
-        <td> <%= link_to "Approve", request_path(request, :status => 'approved'), method: :patch, class: "complete-link" %></td>
+        <td> <%= link_to "Decline", request_path(request, :status => 'denied', :playlist => request[:pl_id]), method: :patch, class: "cancel-link" %></td>
+        <td> <%= link_to "Approve", request_path(request, :status => 'approved', :playlist => request[:pl_id]), method: :patch, class: "complete-link" %></td>
       <% end %>
     <% end %>
 <% end %>

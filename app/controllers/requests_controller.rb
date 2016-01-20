@@ -24,8 +24,9 @@ class RequestsController < ApplicationController
   end
 
   def update
-    Order.find(params[:id]).update_attributes(current_status: params[:order_status])
-    redirect_to admin_dashboard_index_path
+    Request.find(params[:id]).update_attributes(status: params[:status])
+    flash[:success] = "Request has been #{params[:status]}"
+    redirect_to playlists_path
   end
 
   def request_service
