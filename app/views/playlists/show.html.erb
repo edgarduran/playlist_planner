@@ -1,4 +1,5 @@
 <h2>Playlist: <%= @playlist.name %></h2>
+<%= link_to "Rename Playlist", edit_playlist_path(@playlist, pl_id: @playlist.id, user: current_user.user_name) %><br>
 
 <div>
   <h5>Email Playlist</h5>
@@ -32,4 +33,12 @@
   <% end %>
 </ul>
 
-<%= link_to "Rename Playlist", edit_playlist_path(@playlist, pl_id: @playlist.id, user: current_user.user_name) %>
+<h3>Pending Requests</h3>
+<div>
+  <% @requests.each do |request| %>
+    <li>
+      <h5> <%= request[:song_name] %></h5>
+      <h5> <%= request[:status] %></h5>
+    </li>
+  <% end %>
+</div>
