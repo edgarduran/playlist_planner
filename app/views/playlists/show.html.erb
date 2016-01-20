@@ -1,4 +1,5 @@
 <h2>Playlist: <%= @playlist.name %></h2>
+<%= link_to "Rename Playlist", edit_playlist_path(@playlist, pl_id: @playlist.id, user: current_user.user_name) %><br>
 
 <div>
   <h5>Email Playlist</h5>
@@ -32,4 +33,28 @@
   <% end %>
 </ul>
 
-<%= link_to "Rename Playlist", edit_playlist_path(@playlist, pl_id: @playlist.id, user: current_user.user_name) %>
+<% if @requests.nil? || @requests == [] %>
+  <h3>You have no pending requests</h3>
+<% else %>
+<div>
+    <h3>Pending Requests</h3>
+    <table class="pending-requests centered">
+      <thead>
+        <tr>
+            <th class="center-align">Song</th>
+            <th>Artist(s)</th>
+            <th>Status</th>
+            <th></th>
+        </tr>
+      </thead>
+    <% @requests.each do |request| %>
+    <tr id="request_id">
+      <td class="center-align"><%= request[:song_name] %></td>
+      <td>Artist Name</td>
+      <td> <%= request[:status] %></td>
+      <% if request[:status] == "pending" %>
+        <td> <%= link_to "Decline", request_path(request, :status => 'denied'), method: :patch, class: "cancel-link" %></td>
+        <td> <%= link_to "Approve", request_path(request, :status => 'approved', :pl_id => request[:pl_id], :user => @playlist.owner.id, :song_id => request[:song_id]), method: :patch, class: "complete-link" %></td>
+      <% end %>
+    <% end %>
+<% end %>

@@ -8,6 +8,7 @@ class PlaylistsController < ApplicationController
   def show
     @playlist = spotify_service.find_playlist(params)
     @songs    = spotify_service.songs(@playlist)
+    @requests = current_user.requests.where(pl_id: params[:pl_id])
   end
 
   def new

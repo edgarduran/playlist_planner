@@ -1,4 +1,4 @@
-class SpotifyService
+ class SpotifyService
   attr_reader :client
 
   def initialize(session)
@@ -56,7 +56,7 @@ class SpotifyService
 
   def remove_track(pl, track)
     track = [] << track
-    pl.remove_tracks!(track)    
+    pl.remove_tracks!(track)
   end
 
 end
