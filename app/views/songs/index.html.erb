@@ -16,7 +16,7 @@
             <%= hidden_field_tag(:pl_id, params[:pl_id]) %>
             <%= hidden_field_tag(:user, params[:user]) %>
             <%= hidden_field_tag(:song_id, song[:song_id]) %>
-            <%= submit_tag "Add to Playlist" %>
+            <%= submit_tag "Add to Playlist", id: "song_#{song[:song_id]}" %>
           <% end %>
         </div>
       </div>

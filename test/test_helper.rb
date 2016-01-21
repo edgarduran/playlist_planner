@@ -53,8 +53,8 @@ class ActionDispatch::IntegrationTest
           "type"=>"user",
           "uri"=>"spotify:user:eduran1"},
           "credentials"=>
-          {"token" => "BQDTlQkQZmfa_SDh0fqFo5N4n7FrPysLL0cIgzuMhZs7jMllQyBRctMh5mxh8R2KN8Dv_XOIejPIqE4ITdNYwRbGnZ_pnFL-wuMUc6hC1RCYj5cvDB_1Qo_mz52ipltBM1fhj2fu9H4eYD5wD4ePGp6sci5oUlSlQSipoIZQLaYLNIT1QY_PZxg1YZvr_GXbGpUQ47c3R5TKUVgHoqMP_MtEyXX2kp8OPfUcLVT9kfWHcQoQCCsAm_cntrYOZMWP8FhnodTGpHJXNKfSr0q-M9uAg1eaWJJdWECdKzfxg75lnmjh",
-            "refresh_token" => "AQCPB_zQVA2HbJG3VtLWBk8mwVB5yTYCaPa_1Zl2Lv7bEn3EO7F8DSU1kULZlDNLr6o6dkk_ftHkg4aEjPavbHQHVn8OJdxFm3T8K0anW5EyyyHHFQIfLgmVIxfjXst1B5A",
+          {"token" => "BQCeCiJ8nHwBCPfrDQAroc6cTmqQE0B3CeYRClbJhjB26A9mY1texZTzX-Pw5MXrS3ZSzZSY5kpVo5yUrNqjRBO2it-eGRey3xS3RZzJIGGBPwaEmRxrtFmhHD22Eo6JoSgJoX3UYybOzNqyFKjVib0EqgNdOLOCzpbjNAgu6WCekx6y2hskDqOl8ajkTx_-uKO6u-K2FEkbUjvPfYYh3iqZPYzNHovdMjtCw-UkDC5o0uMZt1qN3ra-0d13ewGOlkDV6_Cfce8XSeWfV3tZiRPsHe8G_FY5juYY0iOgEu0jgjlI",
+            "refresh_token" => "AQB4aK7XoOE3QYhD2-OlQPld_3NcYE82cD5rm9CQMVyJgm_odr8n1-r7ti-gpZY_3ktbN6123Ni9KAFA1Uylv7rTQzb1A5NtuoWpsLtbLx3xvU572hoT5aGePAIS2QWUCxA",
             "expires_at"=>1453169555,
             "expires"=>true},
             "extra"=>{}}
