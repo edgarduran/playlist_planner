@@ -18,7 +18,7 @@
             <p>There are currently <%=list.total%> tracks in this playlist.</p>
             <p>Navigate into playlist to see more options</p>
             </div>
-            <div class="card-action">
+            <div id="<%= list.name %>" class="card-action">
               <%= link_to "View/Edit Details", playlist_path(list, pl_id: list.id, user: current_user.user_name, pl_name: list.name, user_id: current_user.id) %>
             </div>
           </div>

@@ -10,7 +10,6 @@ SimpleCov.start 'rails'
 
 class ActiveSupport::TestCase
   # Setup all fixtures in test/fixtures/*.yml for all tests in alphabetical order.
-  fixtures :all
 
   VCR.configure do |config|
     config.cassette_library_dir = "test/cassettes"
@@ -54,8 +53,8 @@ class ActionDispatch::IntegrationTest
           "type"=>"user",
           "uri"=>"spotify:user:eduran1"},
           "credentials"=>
-          {"token" => "BQBB-FG0AwI3b8rp8vYKq6GWnAHwMtFzeEBeg_97iq5t_BK_J_SS3Ws4Hu508QwK8EmZFVIfSgbRoxgAy9McIBOg193Vt65-ssq6mbE8h5PFdcKMN1ROE02ngP0eTecNNN_YfTjetYs316bLhH2zScQwipz2ajooQd61J-MTtbCbOOcJD1SIxF8xiQv0aX0Wv_czLCetPidq4G5-Dl1Ck60j1icCStRrqT2Mb6pO9OEDjg27fheMkNfI13L6OO1xP5Y2LQonGAeS0tjjoojKFuhoPS-naWaGty7xQdJ2mnttrXPo",
-            "refresh_token" => "AQC5jBOogdGnVIKuZSycuWdQoGWEHsfVIsPYqQ5D3r2Iu-zhhmBxnYnzXDO5YsJDiJ4JgUaRqk7JXILWqtRlRrJqpX_adnTUGYYc3Kn50STPwL8LwSp2fRGPOxZv6jN-HDc",
+          {"token" => "BQDTlQkQZmfa_SDh0fqFo5N4n7FrPysLL0cIgzuMhZs7jMllQyBRctMh5mxh8R2KN8Dv_XOIejPIqE4ITdNYwRbGnZ_pnFL-wuMUc6hC1RCYj5cvDB_1Qo_mz52ipltBM1fhj2fu9H4eYD5wD4ePGp6sci5oUlSlQSipoIZQLaYLNIT1QY_PZxg1YZvr_GXbGpUQ47c3R5TKUVgHoqMP_MtEyXX2kp8OPfUcLVT9kfWHcQoQCCsAm_cntrYOZMWP8FhnodTGpHJXNKfSr0q-M9uAg1eaWJJdWECdKzfxg75lnmjh",
+            "refresh_token" => "AQCPB_zQVA2HbJG3VtLWBk8mwVB5yTYCaPa_1Zl2Lv7bEn3EO7F8DSU1kULZlDNLr6o6dkk_ftHkg4aEjPavbHQHVn8OJdxFm3T8K0anW5EyyyHHFQIfLgmVIxfjXst1B5A",
             "expires_at"=>1453169555,
             "expires"=>true},
             "extra"=>{}}

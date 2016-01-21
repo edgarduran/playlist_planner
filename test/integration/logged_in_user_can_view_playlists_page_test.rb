@@ -30,7 +30,7 @@ class LoggedInUserCanViewPlaylistsPageTest < ActionDispatch::IntegrationTest
   end
 
   test "user can view selected playlist" do
-    VCR.user_cassette('get_playlist') do
+    VCR.use_cassette('get_playlist') do
       login_user
       click_link "Create and View Playlists"
 
