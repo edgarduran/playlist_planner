@@ -13,5 +13,4 @@ class RequestService
     data.map { |song| { :name => song.name, :duration => song.duration_ms, :artists => get_artists(song.artists), :song_id => song.id } }
   end
 
-
 end

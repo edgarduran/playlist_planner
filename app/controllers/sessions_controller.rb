@@ -6,7 +6,6 @@ class SessionsController < ApplicationController
       session[:user_id] = user.id
       session[:spotify_hash] = oauth
       redirect_to landing_path(user)
-
     else
       redirect_to "/"
     end

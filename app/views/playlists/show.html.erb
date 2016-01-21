@@ -1,46 +1,77 @@
-<h2>Playlist: <%= @playlist.name %></h2>
-<%= link_to "Rename Playlist", edit_playlist_path(@playlist, pl_id: @playlist.id, user: current_user.user_name) %><br>
-<div>
-  <h5>Email Playlist</h5>
-  <%= form_tag mailers_path, method: :post do %>
-    <%= label_tag :email %>
-    <%= text_field_tag :email %>
-    <%= hidden_field_tag(:pl_id, params[:pl_id]) %>
-    <%= hidden_field_tag(:pl_name, params[:pl_name]) %>
-    <%= hidden_field_tag(:user_id, params[:user_id]) %>
-    <%= hidden_field_tag(:user, params[:user]) %>
-    <%= hidden_field_tag(:rspotify, params[:id]) %>
-    <%= submit_tag "Send Email", class: "btn" %>
-  <% end %>
-</div><br>
-
-
-  <div>
-    <h5>Contribute to Playlist</h5>
-    <%= form_tag songs_path, method: :get do %>
-      <%= label_tag :query %>
-      <%= text_field_tag :query %>
-      <%= hidden_field_tag(:pl_id, @playlist.id) %>
-      <%= hidden_field_tag(:user, @playlist.owner.id) %>
-      <%= submit_tag "Find Track" %>
-    <% end %>
+<head>
+  <body background="https://d1a3f4spazzrp4.cloudfront.net/web-fresh/home/map-web@2x.gif">
+  </head>
+  <div class="center">
+    <h2 class="white-text"><%= @playlist.name.titleize %></h2>
+    <%= link_to "Rename Playlist", edit_playlist_path(@playlist, pl_id: @playlist.id, user: current_user.user_name), class: "btn red" %><br>
   </div>
-<ul>
-  <h4>Tracks</h4>
-  <% @songs.each do |song| %>
-    <li>
-      <h5> <%= song[:name] %></h5>
-      <h6> <%= song[:artists] %></h6>
-      <%= song[:duration] %>
-    </li>
-    <%= link_to "Remove From Playlist", song_path(song, song_id: song[:song_id], pl_id: @playlist.id, user: current_user.user_name), method: :delete, class: "btn" %>
-  <% end %>
-</ul>
 
+  <!-- spacers -->
+  <div class="row"></div>
+  <div class="row"></div>
+  <div class="row"></div>
+
+  <div class="white-transparent">
+    <div class="row">
+      <div class="col m3">
+        <p></p>
+      </div>
+      <div class="col m6 center-align">
+        <h5>Email Playlist</h5>
+        <%= form_tag mailers_path, method: :post do %>
+        <%= label_tag :email %>
+        <%= text_field_tag :email %>
+        <%= hidden_field_tag(:pl_id, params[:pl_id]) %>
+        <%= hidden_field_tag(:pl_name, params[:pl_name]) %>
+        <%= hidden_field_tag(:user_id, params[:user_id]) %>
+        <%= hidden_field_tag(:user, params[:user]) %>
+        <%= hidden_field_tag(:rspotify, params[:id]) %>
+        <%= submit_tag "Send Email", class: "btn" %>
+        <% end %>
+      </div>
+    </div><br>
+    <div class="row">
+      <div class="col m3">
+        <p></p>
+      </div>
+      <div>
+        <div class="col m6 center-align">
+          <h5>Contribute to Playlist</h5>
+          <%= form_tag songs_path, method: :get do %>
+          <%= label_tag :query %>
+          <%= text_field_tag :query %>
+          <%= hidden_field_tag(:pl_id, @playlist.id) %>
+          <%= hidden_field_tag(:user, @playlist.owner.id) %>
+          <%= submit_tag "Find Track" %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+    <ul>
+    </div>
+
+  <div class="row">
+    <div class= "col m3">
+      <div class="white-transparent liner">
+        <h4>Tracks</h4>
+        <% @songs.each do |song| %>
+        <li>
+          <h5> <%= song[:name] %></h5>
+          <h6> <%= song[:artists] %></h6>
+          <%= song[:duration] %>
+        </li>
+        <%= link_to "Remove From Playlist", song_path(song, song_id: song[:song_id], pl_id: @playlist.id, user: current_user.user_name), method: :delete %>
+        <% end %>
+      </ul>
+      </div>
+    </div>
+
+
+  <div class="col m9">
+    <div class="white-transparent liner">
 <% if @requests.nil? || @requests == [] %>
   <h3>You have no pending requests</h3>
 <% else %>
-<div>
     <h3>Pending Requests</h3>
     <table class="pending-requests centered">
       <thead>
@@ -62,3 +93,6 @@
       <% end %>
     <% end %>
 <% end %>
+</div>
+</div>
+</div>
