@@ -10,7 +10,7 @@ class ApplicationController < ActionController::Base
   end
 
 
-  def authorize!
-    redirect_to root_path unless current_user
-  end
+  # def authorize!
+  #   redirect_to root_path unless current_user
+  # end
 end
