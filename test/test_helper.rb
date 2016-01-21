@@ -54,9 +54,8 @@ class ActionDispatch::IntegrationTest
           "type"=>"user",
           "uri"=>"spotify:user:eduran1"},
           "credentials"=>
-          {"token"=>
-            "BQBo6kDrGvX3K7P4njwKQDAP9csxFbKyaSqMMMYVsPDnV0YAVCRhZvgfXIJ6OCwnIugodBNGuzuXbTtTfZl4RoNkBqOITbck3uZOyEsrxbWeAhY0KPc_YyJjz9DAntwPf_iI1GPf-Wmt60dkAVexJruL_6Bon5NbQwdp4PU2Xa-BJRPwymlbX4XziBVLi54PDRVDGdQz8q2xmW4NjiJsBLMMaP6c5V_h8GJpd4bl9wFTz5LtSZG1btRukXOtyvGiTgkE4IuHzZr8OQ-kecol30cUUl41Iuso0y61Nn0gdEtQCGhm",
-            "refresh_token"=>"AQDgkjqHaz5KPSO1xUAwocMUvyd2k3Pkab6wLjCOZCqb1sQxTG98XYhHsrchMAcQxVSrZJl6XZLIOFjLMdQshdlnuTcerokr-4fAEW7pLNiCynMltAo611rTfZGJUaDEV3M",
+          {"token" => "BQBB-FG0AwI3b8rp8vYKq6GWnAHwMtFzeEBeg_97iq5t_BK_J_SS3Ws4Hu508QwK8EmZFVIfSgbRoxgAy9McIBOg193Vt65-ssq6mbE8h5PFdcKMN1ROE02ngP0eTecNNN_YfTjetYs316bLhH2zScQwipz2ajooQd61J-MTtbCbOOcJD1SIxF8xiQv0aX0Wv_czLCetPidq4G5-Dl1Ck60j1icCStRrqT2Mb6pO9OEDjg27fheMkNfI13L6OO1xP5Y2LQonGAeS0tjjoojKFuhoPS-naWaGty7xQdJ2mnttrXPo",
+            "refresh_token" => "AQC5jBOogdGnVIKuZSycuWdQoGWEHsfVIsPYqQ5D3r2Iu-zhhmBxnYnzXDO5YsJDiJ4JgUaRqk7JXILWqtRlRrJqpX_adnTUGYYc3Kn50STPwL8LwSp2fRGPOxZv6jN-HDc",
             "expires_at"=>1453169555,
             "expires"=>true},
             "extra"=>{}}

@@ -12,7 +12,6 @@ class UserLogsInWithSpotifyTest < ActionDispatch::IntegrationTest
     assert_equal 200, page.status_code
 
     click_link "Login with Spotify"
-
     user = User.last
     assert_equal landing_path(user.id), current_path
     assert page.has_content?("Edgar Duran")

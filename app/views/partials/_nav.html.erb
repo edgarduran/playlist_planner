@@ -7,6 +7,7 @@
       </ul>
       <% if current_user %>         
         <ul id="nav-mobile" class="right hide-on-med-and-down">
+          <li><h4><%= link_to "Profile", landing_path(current_user) %></h4></li>
           <li><h4><%= link_to "Logout", logout_path %></h4></li>
         </ul>
       <% end %>

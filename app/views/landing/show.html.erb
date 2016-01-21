@@ -7,14 +7,14 @@
   </head>
   <body>
     <div class="">
-      <header class="header grey z-depth-1 center"><br>
+      <header class="header z-depth-1 center"><br>
       <%= image_tag current_user.image, class: "circle" %>
       <h4 class="white-text"> <%= current_user.display_name %></h4>
       <div class="row">
         <div class="col s6"><h5 class="white-text"> Username: <%= current_user.user_name %></h5></div>
         <div class="col s6"><h5 class="white-text"> Email: <%= current_user.email %></h5></div>
       </div>
-   </div>
+    </div>
    <div class="center-align">
      <%= link_to "Create and View Playlists", playlists_path, class:"btn large lime darken-2" %>
    </div>
