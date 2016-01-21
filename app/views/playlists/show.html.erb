@@ -1,6 +1,6 @@
 <head>
   <body background="https://d1a3f4spazzrp4.cloudfront.net/web-fresh/home/map-web@2x.gif">
-  </head>
+</head>
   <div class="center">
     <h2 class="white-text"><%= @playlist.name.titleize %></h2>
     <%= link_to "Rename Playlist", edit_playlist_path(@playlist, pl_id: @playlist.id, user: current_user.user_name), class: "btn red" %><br>
@@ -50,7 +50,7 @@
     </div>
 
   <div class="row">
-    <div class= "col m3">
+    <div class= "col m6">
       <div class="white-transparent liner">
         <h4>Tracks</h4>
         <% @songs.each do |song| %>
@@ -66,18 +66,19 @@
     </div>
 
 
-  <div class="col m9">
+  <div class="col m6">
     <div class="white-transparent liner">
 <% if @requests.nil? || @requests == [] %>
-  <h3>You have no pending requests</h3>
+  <h3 class="center">You have no pending requests</h3>
 <% else %>
-    <h3>Pending Requests</h3>
+    <h3 class="center">Pending Requests</h3>
     <table class="pending-requests centered">
       <thead>
         <tr>
             <th class="center-align">Song</th>
             <th>Artist(s)</th>
-            <th>Status</th>
+            <th></th>
+            <th class="center">Do you want to add this song?</th>
             <th></th>
         </tr>
       </thead>
@@ -85,10 +86,12 @@
     <tr id="request_id">
       <td class="center-align"><%= request[:song_name] %></td>
       <td>Artist Name</td>
-      <td> <%= request[:status] %></td>
+      <td></td>
       <% if request[:status] == "pending" %>
-        <td> <%= link_to "Decline", request_path(request, :status => 'denied'), method: :patch, class: "cancel-link" %></td>
-        <td> <%= link_to "Approve", request_path(request, :status => 'approved', :pl_id => request[:pl_id], :user => @playlist.owner.id, :song_id => request[:song_id]), method: :patch, class: "complete-link" %></td>
+        <td>
+          <%= link_to "Decline", request_path(request, :status => 'denied'), method: :patch, class: "cancel-link red-text" %> /
+          <%= link_to "Approve", request_path(request, :status => 'approved', :pl_id => request[:pl_id], :user => @playlist.owner.id, :song_id => request[:song_id]), method: :patch, class: "complete-link white-text" %>
+        </td>
       <% end %>
     <% end %>
 <% end %>
