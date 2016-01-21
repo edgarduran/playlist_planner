@@ -41,4 +41,18 @@ class UserCanCrudPlaylistsTest < ActionDispatch::IntegrationTest
     assert_equal songs_path, current_path
   end
 
+  test "user can rename playlist" do
+    login_user
+    user  = User.last
+    click_link "Create and View Playlists"
+    assert_equal playlists_path, current_path
+    click_link "View/Edit Details"
+
+    click_on "Rename Playlist"
+
+
+    fill_in "Name", with: "Test 2"
+    click_on "Rename"
+  end
+
 end
