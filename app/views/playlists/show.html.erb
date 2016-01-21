@@ -1,6 +1,6 @@
 <head>
   <body background="https://d1a3f4spazzrp4.cloudfront.net/web-fresh/home/map-web@2x.gif">
-</head>
+  </head>
   <div class="center">
     <h2 class="white-text"><%= @playlist.name.titleize %></h2>
     <%= link_to "Rename Playlist", edit_playlist_path(@playlist, pl_id: @playlist.id, user: current_user.user_name), class: "btn red" %><br>
@@ -49,52 +49,55 @@
     <ul>
     </div>
 
-  <div class="row">
-    <div class= "col m6">
-      <div class="white-transparent liner">
-        <h4>Tracks</h4>
-        <% @songs.each do |song| %>
-        <li>
-          <h5> <%= song[:name] %></h5>
-          <h6> <%= song[:artists] %></h6>
-          <%= song[:duration] %>
-        </li>
-        <%= link_to "Remove From Playlist", song_path(song, song_id: song[:song_id], pl_id: @playlist.id, user: current_user.user_name), method: :delete %>
-        <% end %>
-      </ul>
+
+    <div class="row">
+      <div class= "col m6">
+        <div class="white-transparent liner">
+          <h3 class="center">Tracks</h3>
+          <% @songs.each do |song| %>
+            <div class="card blue-grey darken-1">
+              <div class="card-content white-text center">
+                <span class="card-title"><%= song[:name] %></span>
+                <p><%= song[:artists] %></p>
+              </div>
+              <div class="card-action center">
+                <%= link_to "Remove From Playlist", song_path(song, song_id: song[:song_id], pl_id: @playlist.id, user: current_user.user_name), method: :delete, class: "red-text" %>
+              </div>
+            </div>
+            <% end %>
       </div>
     </div>
 
 
-  <div class="col m6">
-    <div class="white-transparent liner">
-<% if @requests.nil? || @requests == [] %>
-  <h3 class="center">You have no pending requests</h3>
-<% else %>
-    <h3 class="center">Pending Requests</h3>
-    <table class="pending-requests centered">
-      <thead>
-        <tr>
-            <th class="center-align">Song</th>
-            <th>Artist(s)</th>
-            <th></th>
-            <th class="center">Do you want to add this song?</th>
-            <th></th>
-        </tr>
-      </thead>
-    <% @requests.each do |request| %>
-    <tr id="request_id">
-      <td class="center-align"><%= request[:song_name] %></td>
-      <td>Artist Name</td>
-      <td></td>
-      <% if request[:status] == "pending" %>
-        <td>
-          <%= link_to "Decline", request_path(request, :status => 'denied'), method: :patch, class: "cancel-link red-text" %> /
-          <%= link_to "Approve", request_path(request, :status => 'approved', :pl_id => request[:pl_id], :user => @playlist.owner.id, :song_id => request[:song_id]), method: :patch, class: "complete-link white-text" %>
-        </td>
-      <% end %>
-    <% end %>
-<% end %>
-</div>
-</div>
-</div>
+    <div class="col m6">
+      <div class="white-transparent liner">
+        <% if @requests.nil? || @requests == [] %>
+        <h3 class="center">You have no pending requests</h3>
+        <% else %>
+        <h3 class="center">Pending Requests</h3>
+        <table class="pending-requests centered">
+          <thead>
+            <tr>
+              <th class="center-align">Song</th>
+              <th>Artist(s)</th>
+              <th></th>
+              <th class="center">Do you want to add this song?</th>
+              <th></th>
+            </tr>
+          </thead>
+          <% @requests.each do |request| %>
+          <tr id="request_id">
+            <td class="center-align"><%= request[:song_name] %></td>
+            <td>Artist Name</td>
+            <td></td>
+            <% if request[:status] == "pending" %>
+            <td>
+              <%= link_to "Decline", request_path(request, :status => 'denied'), method: :patch, class: "cancel-link red-text" %> /
+              <%= link_to "Approve", request_path(request, :status => 'approved', :pl_id => request[:pl_id], :user => @playlist.owner.id, :song_id => request[:song_id]), method: :patch, class: "complete-link white-text" %>
+            </td>
+            <% end %>
+            <% end %>
+            <% end %>
+          </div>
+        </div>
+      </div>

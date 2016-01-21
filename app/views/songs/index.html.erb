@@ -1,16 +1,25 @@
-<h2>Search Results:</h2>
-<ul>
+<head>
+  <body background="https://d1a3f4spazzrp4.cloudfront.net/web-fresh/home/map-web@2x.gif">
+</head>
+
+<div class="row">
+  <h1 class="white-text center">Search Results:</h1>
   <% @search_results.each do |song| %>
-    <li>
-      <h5> <%= song[:name] %></h5>
-      <%= form_tag songs_path, method: :post do %>
-        <%= hidden_field_tag(:pl_id, params[:pl_id]) %>
-        <%= hidden_field_tag(:user, params[:user]) %>
-        <%= hidden_field_tag(:song_id, song[:song_id]) %>
-        <%= submit_tag "Add to Playlist" %>
-      <% end %>
-      <h6> <%= song[:artists] %></h6>
-      <%= song[:duration] %>
-    </li>
-  <% end %>
-</ul>
+  <div class="col s4">
+    <div class="card blue-grey darken-1">
+      <div class="card-content white-text">
+        <p class="strong center"><%= song[:name].first(45) %></p>
+        <p class="center"> <%= song[:artists] %></p>
+        </div>
+        <div class="card-action center">
+          <%= form_tag songs_path, method: :post do %>
+            <%= hidden_field_tag(:pl_id, params[:pl_id]) %>
+            <%= hidden_field_tag(:user, params[:user]) %>
+            <%= hidden_field_tag(:song_id, song[:song_id]) %>
+            <%= submit_tag "Add to Playlist" %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+    <% end %>
+  </div>
