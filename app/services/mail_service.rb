@@ -6,12 +6,12 @@ class MailService
     @client = SendGrid::Client.new(api_key: ENV['YOUR_SENDGRID_APIKEY'])
   end
 
-  def send_email(params, origin)
+  def send_email(params)
     mail = SendGrid::Mail.new do |m|
       m.to = params[:email]
       m.from = 'taco@cat.limo'
       m.subject = 'Contribute to my Playlist'
-      m.text = "#{origin}/requests/#{path_name(params)}"
+      m.text = "https://playlist-planner.herokuapp.com/requests/#{path_name(params)}"
     end
     client.send(mail)
   end
