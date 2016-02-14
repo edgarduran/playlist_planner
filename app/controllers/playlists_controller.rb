@@ -1,8 +1,12 @@
 class PlaylistsController < ApplicationController
 
   def index
-    playlists = spotify_service.playlists
-    @playlists = playlists.delete_if { |playlist| !playlist.name.include?("PLP")}
+    if current_user
+      playlists = spotify_service.playlists
+      @playlists = playlists.delete_if { |playlist| !playlist.name.include?("PLP")}
+    else
+      redirect_to login_path
+    end
   end
 
   def show
