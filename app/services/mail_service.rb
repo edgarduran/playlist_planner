@@ -8,12 +8,19 @@ class MailService
 
   def send_email(params)
     mail = SendGrid::Mail.new do |m|
-      m.to = params[:email]
-      m.from = 'taco@cat.limo'
+      m.to = create_emails_array(params[:email])
+      m.from = 'make-a-playlist@sweetapp.yeah'
       m.subject = 'Contribute to my Playlist'
+      m.text = "Copy and paste the provided into a browser to contribute to the playlist"
       m.text = "https://playlist-planner.herokuapp.com/requests/#{path_name(params)}"
+      m.html = "<html><p>Click below to contribute to the playlist</p></html>"
+      m.html = "<html><a href='https://playlist-planner.herokuapp.com/requests/#{path_name(params)}'>Suggest a song</a></html>"
     end
     client.send(mail)
+  end
+
+  def create_emails_array(emails)
+    emails.split
   end
 
   private

@@ -16,7 +16,8 @@
         <p></p>
       </div>
       <div class="col m6 center-align">
-        <h5>Email Playlist</h5>
+        <h5 >Email Playlist Link</h5>
+        <p>Enter email address(s) to send link to friends</p>
         <%= form_tag mailers_path, method: :post do %>
         <%= label_tag :email %>
         <%= text_field_tag :email %>
@@ -25,6 +26,7 @@
         <%= hidden_field_tag(:user_id, params[:user_id]) %>
         <%= hidden_field_tag(:user, params[:user]) %>
         <%= hidden_field_tag(:rspotify, params[:id]) %>
+        <p class="center-align">(Use a single space to separate email addresses)</p>
         <%= submit_tag "Send Email", class: "btn" %>
         <% end %>
       </div>
