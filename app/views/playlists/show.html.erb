@@ -89,7 +89,7 @@
             <% if request[:status] == "pending" %>
               <tr id="request_id">
                 <td class="center-align"><%= request[:song_name] %></td>
-                <td>Artist Name</td>
+                <td><%= request[:artists] %></td>
                 <td></td>
                   <td>
                     <%= link_to "Decline", request_path(request, :status => 'denied'), method: :patch, class: "cancel-link red-text" %> /

@@ -1,15 +1,26 @@
-<h2>Playlist: <%= @playlist[:pl_name] %></h2>
+<head>
+  <body background="https://d1a3f4spazzrp4.cloudfront.net/web-fresh/home/map-web@2x.gif">
+</head>
 
+<h2 class="white-text center">Playlist:</h2>
+<h2 class="white-text center"><%= @playlist[:pl_name] %></h2>
 
-<div>
-  <h5>Contribute to Playlist</h5>
-  <%= form_tag requests_path, method: :get do %>
-    <%= label_tag :query %>
-    <%= text_field_tag :query %>
-    <%= hidden_field_tag(:pl_id, @playlist[:pl_id]) %>
-    <%= hidden_field_tag(:pl_name, @playlist[:pl_name]) %>
-    <%= hidden_field_tag(:user, @playlist[:user]) %>
-    <%= hidden_field_tag(:user_id, @playlist[:user_id]) %>
-    <%= submit_tag "Find Track" %>
-  <% end %>
+<div class="white-transparent">
+  <div class="row">
+    <div class="col m3">
+      <p></p>
+    </div>
+    <div class="col m6 center-align">
+      <h5 class="white-text">Contribute to Playlist</h5>
+      <%= form_tag requests_path, method: :get do %>
+        <%= label_tag :query %>
+        <%= text_field_tag :query %>
+        <%= hidden_field_tag(:pl_id, @playlist[:pl_id]) %>
+        <%= hidden_field_tag(:pl_name, @playlist[:pl_name]) %>
+        <%= hidden_field_tag(:user, @playlist[:user]) %>
+        <%= hidden_field_tag(:user_id, @playlist[:user_id]) %>
+        <%= submit_tag "Find Track", class: "btn" %>
+      <% end %>
+    </div>
+  </div>
 </div>

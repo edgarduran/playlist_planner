@@ -20,9 +20,6 @@
   def songs(playlist)
     raw_data = playlist.tracks
     clean_up(raw_data)
-    # client.playlist.map do |client_playlist|
-    #   Playlist.new(client_playlist)
-    # end
   end
 
   def rename_playlist(params)
