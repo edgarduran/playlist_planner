@@ -18,6 +18,7 @@
             <%= hidden_field_tag(:song_id, song[:song_id]) %>
             <%= hidden_field_tag(:song_name, song[:name]) %>
             <%= hidden_field_tag(:user_id, params[:user_id]) %>
+            <%= hidden_field_tag(:artists, song[:artists]) %>
             <%= submit_tag "Submit as request" %>
           <% end %>
         </div>
