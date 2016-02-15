@@ -11,10 +11,9 @@ class MailService
       m.to = create_emails_array(params[:email])
       m.from = 'make-a-playlist@sweetapp.yeah'
       m.subject = 'Contribute to my Playlist'
-      m.text = "Copy and paste the provided into a browser to contribute to the playlist"
+      m.text = "Copy and paste the provided into a browser to contribute to the playlist(make sure to include whole link):"
       m.text = "https://playlist-planner.herokuapp.com/requests/#{path_name(params)}"
-      m.html = "<html><p>Click below to contribute to the playlist</p></html>"
-      m.html = "<html><a href='https://playlist-planner.herokuapp.com/requests/#{path_name(params)}'>Suggest a song</a></html>"
+      m.html = "<html><p>Copy and paste the provided into a browser to contribute to the playlist(make sure to include whole link):</p><br><p>https://playlist-planner.herokuapp.com/requests/#{path_name(params)}</p></html>"
     end
     client.send(mail)
   end
