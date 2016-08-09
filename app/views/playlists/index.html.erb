@@ -2,28 +2,49 @@
   <body background="https://d1a3f4spazzrp4.cloudfront.net/web-fresh/home/map-web@2x.gif">
 </head>
 
-  <body>
-    <div class="center-align">
-      <h1 class="white-text"> <%= current_user.user_name %></h1>
-      <%= link_to "Create New Playlist", new_playlist_path, class:"btn large lime darken-2"%><br>
-    </div><br>
+<body>
+  <div class="list-header center-align">
+    <h3 class="white-text"> <%= current_user.user_name %></h3>
+    <h2 class="white-text center">Your Playlists</h2>
+    <!-- <%= link_to "Create New Playlist", new_playlist_path, class:"btn large lime darken-2"%><br> -->
+    <button data-target="new-playlist" class="btn large lime darken-2 modal-trigger">Create New Playlist</button><br>
+  </div>
 
-    <div class="row">
-      <h1 class="white-text center">Your Playlists</h1>
-      <% @playlists.each do |list| %>
-      <div class="col s4">
-        <div class="card blue-grey darken-1">
-          <div class="card-content white-text">
-            <span class="card-title black-text"><h3><%= list.name %></h3></span>
-            <p>There are currently <%=list.total%> tracks in this playlist.</p>
-            <p>Navigate into playlist to see more options</p>
-            </div>
-            <div id="<%= list.name %>" class="card-action">
-              <%= link_to "View/Edit Details", playlist_path(list, pl_id: list.id, user: current_user.user_name, pl_name: list.name, user_id: current_user.id) %>
-            </div>
-          </div>
+  <div class="cards row">
+    <% @playlists.each do |list| %>
+    <div class="col s4">
+      <div class="card blue-grey darken-1">
+        <div class="card-content white-text">
+          <span class="card-title black-text"><h3><%= list.name %></h3></span>
+          <p>There are currently <%=list.total%> tracks in this playlist.</p>
+          <p>Navigate into playlist to see more options</p>
         </div>
-        <% end %>
+        <div id="<%= list.name %>" class="card-action">
+          <%= link_to "View/Edit Details", playlist_path(list, pl_id: list.id, user: current_user.user_name, pl_name: list.name, user_id: current_user.id) %>
+        </div>
       </div>
+    </div>
+    <% end %>
+  </div>
 
-    </body>
+  <!-- Modal -->
+  <div id="new-playlist" class="modal black">
+    <div class="modal-header">
+      <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat white-text">X</a>
+    </div>
+      <div class="row">
+        <div class="col m3">
+          <p></p>
+        </div>
+        <div class="col m6 center-align white-text">
+          <h5>New Playlist Name</h5>
+          <%= form_tag playlists_path, method: :post do %>
+            <%= label_tag :name %>
+            <%= text_field_tag :name %>
+            <br><br>
+            <%= submit_tag "Create", class: "create-btn btn lime darken-2" %>
+          <% end %>
+      </div>
+      </div><br>
+  </div>
+</body>
