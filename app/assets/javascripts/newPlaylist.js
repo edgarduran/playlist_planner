@@ -15,7 +15,6 @@ function createPlaylist() {
         $('#new-playlist').closeModal();
       },
       error: function(xhr) {
-        console.log(xhr.responseText);
         $('#new-playlist').closeModal();
       }
     });

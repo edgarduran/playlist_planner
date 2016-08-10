@@ -51,13 +51,13 @@
           <h3 class="center">Tracks</h3>
           <% @songs.each do |song| %>
           <div class="col s6">
-            <div class="card blue-grey darken-1 track-card">
+            <div id="<%= song[:song_id] %>" class="card blue-grey darken-1 track-card">
               <div class="card-content small-card white-text center">
                 <span class="card-title track-title"><%= song[:name] %></span>
                 <p class="track-artist"><%= song[:artists] %></p>
               </div>
-              <div class="card-action small-action center">
-                <%= link_to "Remove From Playlist", song_path(song, song_id: song[:song_id], pl_id: @playlist.id, user: current_user.user_name), method: :delete, class: "red-text", id: "song_#{song[:song_id]}" %>
+              <div class="card-action medium-action center">
+                <button id="<%= song[:song_id] %>" class="delete-track btn small red" name="delete">Delete Track</button>
               </div>
             </div>
           </div>
