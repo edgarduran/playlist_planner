@@ -1,15 +1,3 @@
-$(document).ready(function(){
-  // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
-  $('.modal-trigger').leanModal({
-      dismissible: true,
-      opacity: .7,
-      ready: function () {
-        createPlaylist();
-      }
-    }
-  );
-});
-
 function createPlaylist() {
   $('.create-btn').on('click', function(evt) {
     evt.preventDefault();
@@ -18,7 +6,7 @@ function createPlaylist() {
       alert("Name can not be blank");
     }
 
-  $.ajax({
+    $.ajax({
       type: 'POST',
       url:  '/playlists',
       data: { name: playlistName},
