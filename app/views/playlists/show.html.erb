@@ -10,14 +10,11 @@
   <div class="row"></div>
   <div class="row"></div>
 
-  <div class="white-transparent">
     <div class="row">
-      <div class="col m3">
-        <p></p>
-      </div>
-      <div class="col m6 center-align">
-        <h5 >Email Playlist Link</h5>
-        <p>Enter email address(s) to send link or send to yourself and share w/ friends</p>
+      <div class="col s6 center-align">
+        <div class="white-transparent liner">
+        <h5 class="compact">Email Playlist Link</h5>
+        <p class="compact">Enter email address(s) to send link or send to yourself and share w/ friends</p>
         <%= form_tag mailers_path, method: :post do %>
         <%= label_tag :email %>
         <%= text_field_tag :email %>
@@ -26,52 +23,51 @@
         <%= hidden_field_tag(:user_id, params[:user_id]) %>
         <%= hidden_field_tag(:user, params[:user]) %>
         <%= hidden_field_tag(:rspotify, params[:id]) %>
-        <p class="center-align">(Use a single space to separate email addresses)</p>
+        <p class="center-align compact">(Use a single space to separate email addresses)</p>
         <%= submit_tag "Send Email", class: "btn" %>
         <% end %>
+        </div>
       </div>
-    </div><br>
-    <div class="row">
-      <div class="col m3">
-        <p></p>
-      </div>
-      <div>
-        <div class="col m6 center-align">
-          <h5>Contribute to Playlist</h5>
-          <%= form_tag songs_path, method: :get do %>
-          <%= label_tag :query %>
-          <%= text_field_tag :query %>
-          <%= hidden_field_tag(:pl_id, @playlist.id) %>
-          <%= hidden_field_tag(:user, @playlist.owner.id) %>
-          <%= submit_tag "Find Track" %>
-          <% end %>
+
+      <div class="col s6 center-align">
+        <div class="white-transparent liner">
+        <h5>Contribute to Playlist</h5>
+        <%= form_tag songs_path, method: :get do %>
+        <%= label_tag :query %>
+        <%= text_field_tag :query %>
+        <%= hidden_field_tag(:pl_id, @playlist.id) %>
+        <%= hidden_field_tag(:user, @playlist.owner.id) %>
+        <%= submit_tag "Find Track", class: "btn spaced" %>
+        <% end %>
         </div>
       </div>
     </div>
-    <ul>
-    </div>
 
 
     <div class="row">
-      <div class= "col m6">
+      <div class= "col s6">
         <div class="white-transparent liner">
+          <div class="row">
           <h3 class="center">Tracks</h3>
           <% @songs.each do |song| %>
-            <div class="card blue-grey darken-1">
-              <div class="card-content white-text center">
-                <span class="card-title"><%= song[:name] %></span>
-                <p><%= song[:artists] %></p>
+          <div class="col s6">
+            <div class="card blue-grey darken-1 track-card">
+              <div class="card-content small-card white-text center">
+                <span class="card-title track-title"><%= song[:name] %></span>
+                <p class="track-artist"><%= song[:artists] %></p>
               </div>
-              <div class="card-action center">
+              <div class="card-action small-action center">
                 <%= link_to "Remove From Playlist", song_path(song, song_id: song[:song_id], pl_id: @playlist.id, user: current_user.user_name), method: :delete, class: "red-text", id: "song_#{song[:song_id]}" %>
               </div>
             </div>
+          </div>
             <% end %>
+          </div>
       </div>
     </div>
 
 
-    <div class="col m6">
+    <div class="col s6">
       <div class="white-transparent liner">
         <% if @requests.nil? || @requests == [] %>
           <h3 class="center">You have no pending requests</h3>

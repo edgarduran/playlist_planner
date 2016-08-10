@@ -5,9 +5,16 @@
 }
 
 .white-transparent {
-  background-color: rgba(255,255,255,.3);
+  background-color: rgba(255,255,255,.45);
 }
 
+.compact {
+  margin: 2px;
+}
+
+.spaced {
+  margin: 16px;
+}
 .liner {
   margin: 10px;
   padding: 5px;
@@ -17,6 +24,26 @@ body {
   background-attachment: fixed;
 }
 
-// .modal {
-//   background-color: rgba(255,255,255,.3);
-// }
+.track-card {
+  width: 280px;
+}
+
+.small-card {
+  height: 125px !important;
+}
+
+.small-action {
+  height: 40px !important;
+}
+
+.track-title {
+  font-size: 20px !important;
+  font-weight: 250 !important;
+  line-height: 20px !important;
+}
+
+.track-artist {
+  font-size: 12px !important;
+  font-weight: 170 !important;
+  line-height: 20px !important;
+}
