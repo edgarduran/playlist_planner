@@ -29,4 +29,5 @@ $(document).ready(function(){
   );
   removeTracks();
   songSearch();
+  addSong();
 });

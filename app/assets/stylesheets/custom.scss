@@ -29,11 +29,11 @@ body {
 }
 
 .small-card {
-  height: 125px !important;
+  height: 100px !important;
 }
 
 .small-action {
-  height: 40px !important;
+  height: 25px !important;
 }
 
 .track-title {
@@ -46,4 +46,8 @@ body {
   font-size: 12px !important;
   font-weight: 170 !important;
   line-height: 20px !important;
+}
+
+.song-mdl {
+  background-color: rgba(26, 26, 26,.9) !important;
 }

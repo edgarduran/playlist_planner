@@ -5,6 +5,10 @@ class SongsController < ApplicationController
     @search_results = spotify_service.song_search(params[:query])
     @pl_id = params[:pl_id]
     @pl_owner = params[:user]
+    #
+    # render json: @product
+
+    render json: {search_results: @search_results}
   end
 
   def new
@@ -13,9 +17,8 @@ class SongsController < ApplicationController
   def create
     pl = spotify_service.find_playlist(params)
     track = spotify_service.find_track(params[:song_id])
-    spotify_service.add_track(pl, track)
 
-    redirect_to playlists_path
+    render json: spotify_service.add_track(pl, track)
   end
 
   def add

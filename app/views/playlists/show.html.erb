@@ -31,9 +31,9 @@
 
     <div class="col s6 center-align">
       <div class="white-transparent liner">
-        <h5>Contribute to Playlist</h5>
+        <h5>Add Song To Your Playlist</h5>
         <%= form_tag songs_path, method: :get do %>
-        <%= label_tag :query %>
+        <%= label_tag :query, "Song Name" %>
         <%= text_field_tag :query %>
         <%= hidden_field_tag(:pl_id, @playlist.id) %>
         <%= hidden_field_tag(:user, @playlist.owner.id) %>
@@ -48,7 +48,7 @@
   <div class="row">
     <div class= "col s6">
       <div class="white-transparent liner">
-        <div class="row">
+        <div class="row pl-songs">
           <h3 class="center">Tracks</h3>
           <% @songs.each do |song| %>
           <div class="col s6">
@@ -123,24 +123,26 @@
   </div>
 
   <!-- Modal -->
-  <div id="song-search" class="modal black">
+  <div id="song-search" class="modal song-mdl">
     <div class="modal-header">
       <a class="modal-action modal-close waves-effect waves-green btn-flat white-text">X</a>
     </div>
-      <div class="row">
-        <div class="col m3">
-          <p></p>
-        </div>
-        <div class="col m6 center-align white-text">
-          <h5>Track Results</h5>
-          <%= form_tag playlist_path(@playlist, pl_id: @playlist.id, user: current_user.user_name), method: :patch do %>
-            <%= label_tag :name %>
-            <%= text_field_tag :name %>
-            <br><br>
-            <%= submit_tag "Add it!!", class: "btn lime darken-2" %>
-          <% end %>
+    <div class="row">
+      <div class="col s12 centered">
+        <h1 class="center white-text">Search Results:</h1>
+        <table class="bordered centered song-table">
+          <thead class="white-text">
+            <tr>
+              <th data-field="name"><h5>Name</h5></th>
+              <th data-field="artist">Artist(s)</th>
+              <th data-field="add"></th>
+            </tr>
+          </thead>
+          <tbody>
+          </tbody>
+        </table>
       </div>
-      </div><br>
+    </div>
   </div>
 
 
