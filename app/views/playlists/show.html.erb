@@ -1,6 +1,7 @@
-<head>
-  <body background="https://d1a3f4spazzrp4.cloudfront.net/web-fresh/home/map-web@2x.gif">
+  <head>
+    <body background="https://d1a3f4spazzrp4.cloudfront.net/web-fresh/home/map-web@2x.gif">
   </head>
+
   <div class="center">
     <h2 class="white-text user-name" id="title"><%= @playlist.name %></h2>
     <button data-target="rename-playlist" class="btn red modal-trigger">Rename Playlist</button><br>
@@ -69,31 +70,36 @@
     <div class="col s6">
       <div class="white-transparent liner">
         <% if @requests.empty? %>
-          <h3 class="center">You have no pending requests</h3>
+        <h3 class="center">You have no pending requests</h3>
         <% else %>
-          <h3 class="center">Pending Requests</h3>
-          <table class="pending-requests centered">
-            <thead>
-              <tr>
-                <th class="center-align">Song</th>
-                <th>Artist(s)</th>
-                <th></th>
-                <th class="center">Do you want to add this song?</th>
-                <th></th>
-              </tr>
-            </thead>
-          <% @requests.each do |request| %>
+        <h3 class="center">Pending Requests</h3>
+        <table class="pending-requests centered">
+          <thead>
+            <tr>
+              <th class="center-align">Song</th>
+              <th>Artist(s)</th>
+              <th></th>
+              <th class="center">Do you want to add this song?</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @requests.each do |request| %>
             <% if request[:status] == "pending" %>
-              <tr id="request_id">
-                <td class="center-align"><%= request[:song_name] %></td>
-                <td><%= request[:artists] %></td>
-                <td></td>
-                <td>
-                  <%= link_to "Decline", request_path(request, :status => 'denied'), method: :patch, class: "cancel-link red-text" %> /
-                  <%= link_to "Approve", request_path(request, :status => 'approved', :pl_id => request[:pl_id], :user => @playlist.owner.id, :song_id => request[:song_id]), method: :patch, class: "complete-link white-text" %>
-                </td>
+            <tr id="request_id">
+              <td class="center-align"><%= request[:song_name] %></td>
+              <td><%= request[:artists] %></td>
+              <td></td>
+              <td>
+                <%= link_to "Decline", request_path(request, :status => 'denied'), method: :patch, class: "cancel-link red-text" %> /
+                <%= link_to "Approve", request_path(request, :status => 'approved', :pl_id => request[:pl_id], :user => @playlist.owner.id, :song_id => request[:song_id]), method: :patch, class: "complete-link white-text" %>
+              </td>
+              <td></td>
+            </tr>
             <% end %>
+          </tbody>
           <% end %>
+        </table>
         <% end %>
       </div>
     </div>
@@ -104,20 +110,20 @@
     <div class="modal-header">
       <a class="modal-action modal-close waves-effect waves-green btn-flat white-text">X</a>
     </div>
-      <div class="row">
-        <div class="col m3">
-          <p></p>
-        </div>
-        <div class="col m6 center-align white-text">
-          <h5>Change Name</h5>
-          <%= form_tag playlist_path(@playlist, pl_id: @playlist.id, user: current_user.user_name), method: :patch do %>
-            <%= label_tag :name %>
-            <%= text_field_tag :name %>
-            <br><br>
-            <%= submit_tag "Submit", class: "rename-btn btn lime darken-2" %>
-          <% end %>
+    <div class="row">
+      <div class="col m3">
+        <p></p>
       </div>
-      </div><br>
+      <div class="col m6 center-align white-text">
+        <h5>Change Name</h5>
+        <%= form_tag playlist_path(@playlist, pl_id: @playlist.id, user: current_user.user_name), method: :patch do %>
+        <%= label_tag :name %>
+        <%= text_field_tag :name %>
+        <br><br>
+        <%= submit_tag "Submit", class: "rename-btn btn lime darken-2" %>
+        <% end %>
+      </div>
+    </div><br>
   </div>
 
   <!-- Modal -->
@@ -145,6 +151,6 @@
 
 
   <script>
-    $playlistId = '<%= @playlist.id %>';
-    $user = '<%= current_user.user_name %>';
+  $playlistId = '<%= @playlist.id %>';
+  $user = '<%= current_user.user_name %>';
   </script>
