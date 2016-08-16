@@ -4,10 +4,26 @@
   font-family: Lobster, sans-serif;
 }
 
-.white-transparent {
-  background-color: rgba(255,255,255,.3);
+nav {
+  height: 58px !important;
 }
 
+.user-name {
+  margin-top: 10px !important;
+  margin-bottom: 2px !important;
+}
+
+.white-transparent {
+  background-color: rgba(255,255,255,.45);
+}
+
+.compact {
+  margin: 2px;
+}
+
+.spaced {
+  margin: 16px;
+}
 .liner {
   margin: 10px;
   padding: 5px;
@@ -17,6 +33,30 @@ body {
   background-attachment: fixed;
 }
 
-// .modal {
-//   background-color: rgba(255,255,255,.3);
-// }
+.track-card {
+  width: 280px;
+}
+
+.small-card {
+  height: 100px !important;
+}
+
+.small-action {
+  height: 25px !important;
+}
+
+.track-title {
+  font-size: 20px !important;
+  font-weight: 250 !important;
+  line-height: 20px !important;
+}
+
+.track-artist {
+  font-size: 12px !important;
+  font-weight: 170 !important;
+  line-height: 20px !important;
+}
+
+.song-mdl {
+  background-color: rgba(26, 26, 26,.9) !important;
+}

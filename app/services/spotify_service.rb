@@ -11,7 +11,7 @@
 
   def new_playlist(name)
     client.create_playlist!(name + " PLP", public: true)
-  end
+  end 
 
   def find_playlist(params)
     RSpotify::Playlist.find(params[:user], params[:pl_id])
