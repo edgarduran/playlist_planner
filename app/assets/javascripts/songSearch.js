@@ -35,7 +35,6 @@ function addSong() {
               user: $user,
               song_id: $songId },
       success: function(song) {
-        console.log(song);
         $('#song-search').closeModal();
         $('.pl-songs').append(showSong(song));
       },

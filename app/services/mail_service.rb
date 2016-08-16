@@ -13,7 +13,7 @@ class MailService
       m.subject = 'Contribute to my Playlist'
       m.text = "Copy and paste the provided into a browser to contribute to the playlist(make sure to include whole link):"
       m.text = "https://playlist-planner.herokuapp.com/requests/#{path_name(params)}"
-      m.html = "<html><p>Copy and paste the provided into a browser to contribute to the playlist(make sure to include whole link):</p><br><p>https://playlist-planner.herokuapp.com/requests/#{path_name(params)}</p></html>"
+      m.html = "<html><p>Copy and paste the provided into a browser to contribute to the playlist(make sure to include whole link):<br><a href='https://playlist-planner.herokuapp.com/requests/#{path_name(params)}'>Suggest songs for playlist</a></html>"
     end
     client.send(mail)
   end
