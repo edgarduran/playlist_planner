@@ -36,9 +36,8 @@
         <%= text_field_tag :query %>
         <%= hidden_field_tag(:pl_id, @playlist.id) %>
         <%= hidden_field_tag(:user, @playlist.owner.id) %>
-        <!-- <%= submit_tag "Find Track", class: "btn spaced" %> -->
         <% end %>
-        <button id="some" data-target="song-search" class="search btn lime darken-2 search">Search</button><br>
+        <button id="some" data-target="song-search" class="search btn lime darken-2">Search</button><br>
       </div>
     </div>
   </div>
@@ -78,23 +77,21 @@
             <tr>
               <th class="center-align">Song</th>
               <th>Artist(s)</th>
-              <th></th>
-              <th class="center">Do you want to add this song?</th>
-              <th></th>
+              <th class="center">Add song to playlist?</th>
             </tr>
           </thead>
           <tbody>
             <% @requests.each do |request| %>
             <% if request[:status] == "pending" %>
-            <tr id="request_id">
+            <tr id='<%= request[:id] %>'>
               <td class="center-align"><%= request[:song_name] %></td>
               <td><%= request[:artists] %></td>
-              <td></td>
               <td>
-                <%= link_to "Decline", request_path(request, :status => 'denied'), method: :patch, class: "cancel-link red-text" %> /
-                <%= link_to "Approve", request_path(request, :status => 'approved', :pl_id => request[:pl_id], :user => @playlist.owner.id, :song_id => request[:song_id]), method: :patch, class: "complete-link white-text" %>
+                <!-- <%= link_to "Decline", request_path(request, :status => 'denied'), method: :patch, class: "cancel-link red-text" %> /
+                <%= link_to "Approve", request_path(request, :status => 'approved', :pl_id => request[:pl_id], :user => @playlist.owner.id, :song_id => request[:song_id]), method: :patch, class: "complete-link white-text" %> -->
+                <button id="<%= request[:song_id] %>"class="approve-request btn-small lime darken-2" type="button" name="approve">Approve</button>
+                <button class="decline-request btn-small red" type="button" name="decline">Decline</button>
               </td>
-              <td></td>
             </tr>
             <% end %>
           </tbody>
@@ -150,7 +147,7 @@
   </div>
 
 
-  <script>
+<script>
   $playlistId = '<%= @playlist.id %>';
   $user = '<%= current_user.user_name %>';
-  </script>
+</script>

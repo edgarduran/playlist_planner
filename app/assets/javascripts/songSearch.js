@@ -26,7 +26,7 @@ function songSearch() {
 
 function addSong() {
   $('.song-table').delegate('.add-song', 'click', function() {
-    var $songId = this.id
+    var $songId = this.id;
 
     $.ajax({
       type: 'POST',
