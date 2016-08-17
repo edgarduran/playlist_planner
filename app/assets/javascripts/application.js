@@ -33,4 +33,5 @@ $(document).ready(function(){
   approveRequest();
   denyRequest();
   requestSearch();
+  submitRequest();
 });

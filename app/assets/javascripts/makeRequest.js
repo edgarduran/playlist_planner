@@ -12,7 +12,7 @@ function requestSearch() {
         success: function(songs) {
           $('#request-search').openModal();
           $.each(songs.search_results, function(index, song) {
-            $('#request-search').find('tbody').append(individualSong(song));
+            $('#request-search').find('tbody').append(individualResult(song));
           });
           $('#query').val('');
         },
@@ -25,25 +25,37 @@ function requestSearch() {
 }
 
 function submitRequest() {
-  $('.request-table').delegate('.add-song', 'click', function() {
+  $('.request-table').delegate('.add-request', 'click', function() {
     var songId = this.id;
-    
+    var songName = $(this).parents().find('#song-name').text();
+    var artists = $(this).parents().find('#song-artists').text();
+
     $.ajax({
       type: 'POST',
       url:  '/requests',
-      data: { song_name: 'name',
+      data: { song_name: songName,
               user_id: $userId,
-              artists: 'seven',
+              artists: artists,
               pl_id: $playlistId,
               user: $user,
               song_id: songId },
       success: function(req) {
         $('#request-search').closeModal();
-        console.log('yes');
+         Materialize.toast('Song submitted for approval', 5000);
       },
       error: function(xhr) {
         console.log(xhr.responseText);
       }
     });
   });
+}
+
+function individualResult(song) {
+  return $(
+    "<tr>"
+    +"<td id='song-name' class='white-text'>" + song.name.substring(0, 45) + "</td>"
+    +"<td id='song-artists' class='white-text'>" + song.artists + "</td>"
+    +"<td><button id='" + song.song_id + "' class='add-request btn medium lime darken-2' name='direct-add-song'>Add</button></td>"
+    +"</tr>"
+  );
 }
