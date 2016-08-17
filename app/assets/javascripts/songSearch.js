@@ -26,7 +26,7 @@ function songSearch() {
 
 function addSong() {
   $('.song-table').delegate('.add-song', 'click', function() {
-    var $songId = this.id
+    var $songId = this.id;
 
     $.ajax({
       type: 'POST',
@@ -64,8 +64,8 @@ function showSong(song) {
 function individualSong(song) {
   return $(
     "<tr>"
-    +"<td class='white-text'>" + song.name.substring(0, 45) + "</td>"
-    +"<td class='white-text'>" + song.artists + "</td>"
+    +"<td id='song-name' class='white-text'>" + song.name.substring(0, 45) + "</td>"
+    +"<td id='song-artits' class='white-text'>" + song.artists + "</td>"
     +"<td><button id='" + song.song_id + "' class='add-song btn medium lime darken-2' name='direct-add-song'>Add</button></td>"
     +"</tr>"
   );

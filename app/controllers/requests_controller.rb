@@ -6,6 +6,8 @@ class RequestsController < ApplicationController
 
   def index
     @search_results = request_service.song_search(params[:query])
+
+    render json: {search_results: @search_results}
   end
 
   def create
@@ -31,13 +33,14 @@ class RequestsController < ApplicationController
 
   def update
     if params[:status] == "denied"
-      Request.find(params[:id]).update_attributes(status: params[:status])
-      flash[:success] = "Request has been #{params[:status]}"
-      redirect_to playlists_path
+      denied = Request.find(params[:id]).update_attributes(status: params[:status])
+      render json: denied
+      # flash[:success] = "Request has been #{params[:status]}"
     elsif params[:status] == "approved"
-      Request.find(params[:id]).update_attributes(status: params[:status])
-      redirect_to song_add_path(params)
-      flash[:success] = "Request has been #{params[:status]} and added to playlist"
+      status_approved = Request.find(params[:id]).update_attributes(status: params[:status])
+
+      render json: status_approved
+      # flash[:success] = "Request has been #{params[:status]} and added to playlist"
     else
       flash[:error] = "Something went wrong"
       redirect_to playlists_path

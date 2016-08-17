@@ -10,17 +10,44 @@
     <div class="col m3">
       <p></p>
     </div>
+
     <div class="col m6 center-align">
-      <h5 class="white-text">Contribute to Playlist</h5>
+      <h5 class="white-text">Suggest songs for playlist</h5>
       <%= form_tag requests_path, method: :get do %>
         <%= label_tag :query %>
         <%= text_field_tag :query %>
-        <%= hidden_field_tag(:pl_id, @playlist[:pl_id]) %>
-        <%= hidden_field_tag(:pl_name, @playlist[:pl_name]) %>
-        <%= hidden_field_tag(:user, @playlist[:user]) %>
-        <%= hidden_field_tag(:user_id, @playlist[:user_id]) %>
-        <%= submit_tag "Find Track", class: "btn" %>
       <% end %>
+      <button class="request-search btn lime darken-2">Search</button><br>
     </div>
   </div>
 </div>
+
+<!-- Modal -->
+<div id="request-search" class="modal request-mdl black">
+  <div class="modal-header">
+    <a class="modal-action modal-close waves-effect waves-green btn-flat white-text">X</a>
+  </div>
+  <div class="row">
+    <div class="col s12 centered">
+      <h1 class="center white-text">Search Results:</h1>
+      <table class="bordered centered request-table">
+        <thead class="white-text">
+          <tr>
+            <th data-field="name"><h5>Name</h5></th>
+            <th data-field="artist">Artist(s)</th>
+            <th data-field="add"></th>
+          </tr>
+        </thead>
+        <tbody>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<script>
+  $playlistId = '<%= @playlist[:id] %>';
+  $playlistName = '<%= @playlist[:name] %>';
+  $user = '<%= @playlist[:user] %>';
+  $userId = '<%= @playlist[:user_id] %>';
+</script>
