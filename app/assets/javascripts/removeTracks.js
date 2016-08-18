@@ -19,7 +19,7 @@ function clickEventForTrack(track) {
         trackCard.remove();
       },
       error: function (xhr) {
-        trackCard.remove();
+        console.log(xhr.responseText);
       }
     });
   });

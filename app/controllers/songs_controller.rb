@@ -32,7 +32,9 @@ class SongsController < ApplicationController
   def destroy
     pl = spotify_service.find_playlist(params)
     track = spotify_service.find_track(params[:song_id])
-    spotify_service.remove_track(pl, track)
+    removed = spotify_service.remove_track(pl, track)
+
+    render json: removed
   end
 
   def spotify_service
