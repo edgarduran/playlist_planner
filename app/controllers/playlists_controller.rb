@@ -20,7 +20,8 @@ class PlaylistsController < ApplicationController
 
   def create
     playlist = spotify_service.new_playlist(params[:name])
-    redirect_to playlists_path
+
+    render json: playlist
   end
 
   def edit

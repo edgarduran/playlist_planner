@@ -11,33 +11,36 @@ function createPlaylist() {
         type: 'POST',
         url:  '/playlists',
         data: { name: playlistName},
-        success: function() {
-          showPlaylist(playlistName);
+        success: function(newList) {
+          $('#name').val('');
+          showPlaylist(playlistName, newList);
           $('#new-playlist').closeModal();
         },
         error: function(xhr) {
-          $('#new-playlist').closeModal();
+          console.log(xhr.responseText);
         }
       });
     }
   });
 }
 
-function showPlaylist(playlistName) {
-   $('.cards').prepend(newCard(playlistName));
+function showPlaylist(playlistName, newList) {
+   $('.cards').prepend(newCard(playlistName, newList));
 }
 
-function newCard(playlistName) {
+function newCard(playlistName, newList) {
   return $(
      "<div class='col s4'>"
-      +"<div class='card blue-grey darken-1'>"
+      +"<div class='card blue-grey darken-1 pl-card'>"
         +"<div class='card-content white-text'>"
-          +"<span class='card-title black-text'><h3>" + playlistName + " PLP</h3></span>"
-          +"<p>There are currently 0 tracks in this playlist.</p>"
-          +"<p>Navigate into playlist to see more options</p>"
+          +"<span class='card-title black-text'><h3 class='card-top'>" + playlistName + " PLP</h3></span>"
+          +"<p class='bottom'>There are currently 0 tracks in this playlist."
+          +"Navigate into playlist to see more options.</p>"
         +"</div>"
         +"<div id='<%= newPlaylist.name %>' class='card-action'>"
-          +"<a href='#!'>View/Edit Details</a>"
+          +"<a href='/playlists/%23%3CRSpotify::Playlist:0x007fc7caa2e448%3E?pl_id=" + newList.id
+          +"&pl_name=" + newList.name + "&user=" + newList.owner.id + "&user_id=" + $userId
+          +"'>View/Edit Details</a>"
         +"</div>"
       +"</div>"
     +"</div>"
