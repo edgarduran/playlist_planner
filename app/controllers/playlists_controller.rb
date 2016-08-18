@@ -30,7 +30,8 @@ class PlaylistsController < ApplicationController
 
   def update
     @playlist = spotify_service.rename_playlist(params)
-    redirect_to playlists_path
+
+    render json: @playlist
   end
 
   def destroy
