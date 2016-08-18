@@ -36,7 +36,9 @@ function addSong() {
               song_id: $songId },
       success: function(song) {
         $('#song-search').closeModal();
-        $('.pl-songs').append(showSong(song));
+        var newSong = showSong(song);
+        clickEventForTrack(newSong.find('.delete_track'));
+        $('.pl-songs').append(newSong);
       },
       error: function(xhr) {
         console.log(xhr.responseText);
