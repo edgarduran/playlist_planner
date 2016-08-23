@@ -11,8 +11,6 @@ class SongsController < ApplicationController
     render json: {search_results: @search_results}
   end
 
-  def new
-  end
 
   def create
     pl = spotify_service.find_playlist(params)
