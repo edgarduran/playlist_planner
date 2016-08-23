@@ -18,8 +18,7 @@ function renamePlaylist() {
         $('#rename-playlist').closeModal();
       },
       error: function(xhr) {
-        $('#title').text(newName + 'PLP');
-        $('#rename-playlist').closeModal();
+        console.log(xhr.responseText);
       }
     });
   });
