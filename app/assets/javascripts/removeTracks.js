@@ -2,7 +2,7 @@ function removeTracks() {
   $('.delete-track').each(clickEventForTrack);
 }
 
-function clickEventForTrack(track) {
+function clickEventForTrack() {
   $(this).on('click', function(evt) {
     evt.preventDefault();
     var $songId = this.id;

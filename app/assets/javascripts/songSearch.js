@@ -37,8 +37,8 @@ function addSong() {
       success: function(song) {
         $('#song-search').closeModal();
         var newSong = showSong(song);
-        clickEventForTrack(newSong.find('.delete_track'));
         $('.pl-songs').append(newSong);
+        clickEventForTrack(newSong.closest('.delete-track'));
       },
       error: function(xhr) {
         console.log(xhr.responseText);
