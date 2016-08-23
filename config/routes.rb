@@ -1,7 +1,5 @@
 Rails.application.routes.draw do
 
-  get 'playlists/index'
-
   get '/', to: 'landing#index'
   get '/auth/spotify', as: :login
   get '/auth/spotify/callback', to: 'sessions#create'

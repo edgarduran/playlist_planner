@@ -1,6 +1,8 @@
 function createPlaylist() {
   $('.create-btn').on('click', function(evt) {
     evt.preventDefault();
+    var that = $(this);
+    that.off('click');
     var playlistName = $('#name').val();
 
     if (playlistName === "") {
