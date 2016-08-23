@@ -16,9 +16,11 @@ function renamePlaylist() {
       success: function() {
         $('#title').text(newName + 'PLP');
         $('#rename-playlist').closeModal();
+        Materialize.toast('Playlist name changed to ' + newName, 5000);
       },
       error: function(xhr) {
         console.log(xhr.responseText);
+        Materialize.toast('Oops! Somthing went wrong. Please try again', 5000);
       }
     });
   });

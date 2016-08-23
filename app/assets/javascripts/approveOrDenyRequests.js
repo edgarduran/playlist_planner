@@ -14,6 +14,7 @@ function approveRequest() {
       },
       error: function(xhr) {
         console.log(xhr.responseText);
+        Materialize.toast('Oops! Somthing went wrong. Please try again', 5000);
       }
     });
   });
@@ -29,9 +30,11 @@ function addSongToSpotify(songId, tableRow) {
     success: function(song) {
       tableRow.closest('tr').remove();
       $('.pl-songs').append(showSong(song));
+      Materialize.toast('Request approved; added to playlist', 2500);
     },
     error: function(xhr) {
       console.log(xhr.responseText);
+      Materialize.toast('Oops! Somthing went wrong. Please try again', 5000);
     }
   });
 }
@@ -49,9 +52,11 @@ function denyRequest() {
             },
       success: function() {
         that.closest('tr').remove();
+        Materialize.toast('Request denied', 2500);
       },
       error: function(xhr) {
         console.log(xhr.responseText);
+        Materialize.toast('Oops! Somthing went wrong. Please try again', 5000);
       }
     });
   });

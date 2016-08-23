@@ -15,9 +15,11 @@ function createPlaylist() {
           $('#name').val('');
           showPlaylist(playlistName, newList);
           $('#new-playlist').closeModal();
+          Materialize.toast(playlistName + ' playlist created.', 5000);
         },
         error: function(xhr) {
           console.log(xhr.responseText);
+          Materialize.toast('Oops! Somthing went wrong. Please try again', 5000);
         }
       });
     }

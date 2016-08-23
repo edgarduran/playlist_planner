@@ -17,9 +17,11 @@ function clickEventForTrack() {
       },
       success: function () {
         trackCard.remove();
+        Materialize.toast('Song removed from playlist', 2500);
       },
       error: function (xhr) {
         console.log(xhr.responseText);
+        Materialize.toast('Oops! Somthing went wrong. Please try again', 5000);
       }
     });
   });
