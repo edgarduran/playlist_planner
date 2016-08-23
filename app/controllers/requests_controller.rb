@@ -24,14 +24,11 @@ class RequestsController < ApplicationController
     if params[:status] == "denied"
       denied = Request.find(params[:id]).update_attributes(status: params[:status])
       render json: denied
-      # flash[:success] = "Request has been #{params[:status]}"
     elsif params[:status] == "approved"
       status_approved = Request.find(params[:id]).update_attributes(status: params[:status])
 
       render json: status_approved
-      # flash[:success] = "Request has been #{params[:status]} and added to playlist"
     else
-      flash[:error] = "Something went wrong"
       redirect_to playlists_path
     end
   end
