@@ -1,0 +1,19 @@
+<!-- Modal -->
+<div id="generate-link" class="modal black">
+  <div class="modal-header">
+    <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat white-text">X</a>
+  </div>
+    <div class="row">
+      <div class="col s12">
+        <p></p>
+      </div>
+      <div class="col s12 center-align white-text">
+        <h4>Request Link</h4>
+        <h6 class="center-align blue-text">
+          <%= request.env['rack.url_scheme'] + "://" + request.env['HTTP_HOST'] + (request.env['ORIGINAL_FULLPATH']).gsub('playlists', 'requests') %>
+        </h6><br>
+        <h6>Copy link and share with your friends and guests.<br>
+          Anyone with the link will be able make requests to your playlist.</h6>
+    </div>
+    </div><br>
+</div>

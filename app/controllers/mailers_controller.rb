@@ -2,9 +2,8 @@ require 'sendgrid-ruby'
 class MailersController < ApplicationController
 
   def create
-    mail_service.send_email(params)
-    flash[:success] = "Email Sent"
-    redirect_to playlists_path
+    sent = mail_service.send_email(params, request)
+    render json: sent
   end
 
   def mail_service

@@ -6,14 +6,14 @@ class MailService
     @client = SendGrid::Client.new(api_key: ENV['YOUR_SENDGRID_APIKEY'])
   end
 
-  def send_email(params)
+  def send_email(params, request)
     mail = SendGrid::Mail.new do |m|
       m.to = create_emails_array(params[:email])
       m.from = 'make-a-playlist@sweetapp.yeah'
       m.subject = 'Contribute to my Playlist'
       m.text = "Copy and paste the provided into a browser to contribute to the playlist(make sure to include whole link):"
-      m.text = "https://playlist-planner.herokuapp.com/requests/#{path_name(params)}"
-      m.html = "<html><p>Copy and paste the provided into a browser to contribute to the playlist(make sure to include whole link):<br><a href='https://playlist-planner.herokuapp.com/requests/#{path_name(params)}'>Suggest songs for playlist</a></html>"
+      m.text = path_name(params,request)
+      m.html = "<html><p>Copy and paste the provided into a browser to contribute to the playlist(make sure to include whole link):<br><a href='#{path_name(params,request)}'>Suggest songs for playlist</a></html>"
     end
     client.send(mail)
   end
@@ -24,9 +24,8 @@ class MailService
 
   private
 
-  def path_name(params)
-    spotify_id = params[:rspotify].sub("#", "%23")
-    "#{spotify_id}?pl_id=#{params[:pl_id]}&pl_name=#{params[:pl_name]}&user=#{params[:user]}&user_id=#{params[:user_id]}"
+  def path_name(params, request)
+    (request.env['HTTP_REFERER']).gsub('playlists', 'requests')
   end
 
 

@@ -12,19 +12,18 @@
   <div class="row">
     <div class="col s6 center-align">
       <div class="white-transparent liner">
-        <h5 class="compact">Email Playlist Link</h5>
-        <p class="compact">Enter email address(s) to send link or send to yourself and share w/ friends</p>
-        <%= form_tag mailers_path, method: :post do %>
-        <%= label_tag :email %>
-        <%= text_field_tag :email %>
-        <%= hidden_field_tag(:pl_id, params[:pl_id]) %>
-        <%= hidden_field_tag(:pl_name, params[:pl_name]) %>
-        <%= hidden_field_tag(:user_id, params[:user_id]) %>
-        <%= hidden_field_tag(:user, params[:user]) %>
-        <%= hidden_field_tag(:rspotify, params[:id]) %>
-        <p class="center-align compact">(Use a single space to separate email addresses)</p>
-        <%= submit_tag "Send Email", class: "btn" %>
-        <% end %>
+        <h5>Let Your Friends Contribute</h5>
+        <p class="compact">Email share link to your friends and let them suggest songs!</p>
+        <div class="row"></div>
+        <div class="row"></div>
+        <div class="row">
+          <div class="col s6">
+            <button data-target="email-link" class="btn modal-trigger">Email Link</button><br>
+          </div>
+          <div class="col s6">
+            <button data-target="generate-link" class="btn lime darken-2 modal-trigger">Show Link</button><br>
+          </div>
+        </div>
       </div>
     </div>
 
@@ -103,8 +102,9 @@
   </div>
 
 <%= render "partials/modals/rename_playlist" %>
-
 <%= render "partials/modals/song_search" %>
+<%= render "partials/modals/playlist_link" %>
+<%= render "partials/modals/email_link" %>
 
 <script>
   $playlistId = '<%= @playlist.id %>';
