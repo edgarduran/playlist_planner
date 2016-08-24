@@ -18,6 +18,7 @@ function songSearch() {
         },
         error: function(xhr) {
           console.log(xhr.responseText);
+          Materialize.toast('Oops! Somthing went wrong. Please try again', 5000);
         }
       });
     }
@@ -39,9 +40,11 @@ function addSong() {
         var newSong = showSong(song);
         $('.pl-songs').append(newSong);
         clickEventForTrack(newSong.closest('.delete-track'));
+        Materialize.toast('Track successfully added to your playlist', 5000);
       },
       error: function(xhr) {
         console.log(xhr.responseText);
+        Materialize.toast('Oops! Somthing went wrong. Please try again', 5000);
       }
     });
   });

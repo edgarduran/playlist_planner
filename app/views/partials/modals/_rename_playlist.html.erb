@@ -1,0 +1,20 @@
+<!-- Modal -->
+<div id="rename-playlist" class="modal black">
+  <div class="modal-header">
+    <a class="modal-action modal-close waves-effect waves-green btn-flat white-text">X</a>
+  </div>
+  <div class="row">
+    <div class="col m3">
+      <p></p>
+    </div>
+    <div class="col m6 center-align white-text">
+      <h5>Change Name</h5>
+      <%= form_tag playlist_path(@playlist, pl_id: @playlist.id, user: current_user.user_name), method: :patch do %>
+      <%= label_tag :name %>
+      <%= text_field_tag :name %>
+      <br><br>
+      <%= submit_tag "Submit", class: "rename-btn btn lime darken-2" %>
+      <% end %>
+    </div>
+  </div><br>
+</div>

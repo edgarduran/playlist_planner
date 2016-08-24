@@ -18,6 +18,7 @@ function requestSearch() {
         },
         error: function(xhr) {
           console.log(xhr.responseText);
+          Materialize.toast('Oops! Somthing went wrong. Please try again', 5000);
         }
       });
     }
@@ -41,10 +42,12 @@ function submitRequest() {
               song_id: songId },
       success: function(req) {
         $('#request-search').closeModal();
-         Materialize.toast('Song submitted for approval', 5000);
+         Materialize.toast('Your request has been submitted for approval', 4000);
+         location.reload();
       },
       error: function(xhr) {
         console.log(xhr.responseText);
+        Materialize.toast('Oops! Somthing went wrong. Please try again', 5000);
       }
     });
   });

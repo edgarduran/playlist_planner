@@ -15,17 +15,10 @@ class PlaylistsController < ApplicationController
     @requests = current_user.requests.where(pl_id: params[:pl_id])
   end
 
-  def new
-  end
-
   def create
     playlist = spotify_service.new_playlist(params[:name])
 
     render json: playlist
-  end
-
-  def edit
-    @playlist = spotify_service.find_playlist(params)
   end
 
   def update

@@ -22,28 +22,7 @@
   </div>
 </div>
 
-<!-- Modal -->
-<div id="request-search" class="modal request-mdl black">
-  <div class="modal-header">
-    <a class="modal-action modal-close waves-effect waves-green btn-flat white-text">X</a>
-  </div>
-  <div class="row">
-    <div class="col s12 centered">
-      <h1 class="center white-text">Search Results:</h1>
-      <table class="bordered centered request-table">
-        <thead class="white-text">
-          <tr>
-            <th data-field="name"><h5>Name</h5></th>
-            <th data-field="artist">Artist(s)</th>
-            <th data-field="add"></th>
-          </tr>
-        </thead>
-        <tbody>
-        </tbody>
-      </table>
-    </div>
-  </div>
-</div>
+<%= render "partials/modals/request_search" %>
 
 <script>
   $playlistId = '<%= @playlist[:pl_id] %>';

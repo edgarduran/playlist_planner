@@ -1,6 +1,8 @@
 function createPlaylist() {
   $('.create-btn').on('click', function(evt) {
     evt.preventDefault();
+    var that = $(this);
+    that.off('click');
     var playlistName = $('#name').val();
 
     if (playlistName === "") {
@@ -13,27 +15,30 @@ function createPlaylist() {
         data: { name: playlistName},
         success: function(newList) {
           $('#name').val('');
-          showPlaylist(playlistName, newList);
           $('#new-playlist').closeModal();
+          showPlaylist(newList);
+          Materialize.toast(playlistName + ' playlist created.', 5000);
         },
         error: function(xhr) {
           console.log(xhr.responseText);
+          $('#name').val('');
+          Materialize.toast('Oops! Somthing went wrong. Please try again', 5000);
         }
       });
     }
   });
 }
 
-function showPlaylist(playlistName, newList) {
-   $('.cards').prepend(newCard(playlistName, newList));
+function showPlaylist(newList) {
+   $('.cards').prepend(newCard(newList));
 }
 
-function newCard(playlistName, newList) {
+function newCard(newList) {
   return $(
      "<div class='col s4'>"
       +"<div class='card blue-grey darken-1 pl-card'>"
         +"<div class='card-content white-text'>"
-          +"<span class='card-title black-text'><h3 class='card-top'>" + playlistName + " PLP</h3></span>"
+          +"<span class='card-title black-text'><h3 class='card-top'>" + newList.name + "</h3></span>"
           +"<p class='bottom'>There are currently 0 tracks in this playlist."
           +"Navigate into playlist to see more options.</p>"
         +"</div>"
