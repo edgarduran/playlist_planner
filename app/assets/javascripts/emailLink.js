@@ -1,9 +1,8 @@
 function emailink() {
-  $('.send-emails').on('click', function(evt) {
-    evt.preventDefault();
+  $('.send-emails').on('click', function() {
     var that = $(this);
     that.off('click');
-    
+
     if ($('.addresses').val() === '') {
       Materialize.toast('Cannot be blank', 2500, 'red');
     } else {
