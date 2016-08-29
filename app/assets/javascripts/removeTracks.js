@@ -1,8 +1,13 @@
 function removeTracks() {
-  $('.delete-track').each(clickEventForTrack);
+  // $('.delete-track').each(clickEventForTrack);
+  $('.delete-track').on('click', function(evt) {
+    evt.preventDefault();
+    Materialize.toast('Delete not working at this time. Remove manually via spoitify ', 5000);
+  });
 }
 
 function clickEventForTrack() {
+
   // $(this).on('click', function(evt) {
   //   evt.preventDefault();
   //   var that = $(this);
