@@ -12,12 +12,17 @@ class RequestsController < ApplicationController
 
   def create
     @request = Request.new( song_name: request_params["song_name"],
-                            song_id: request_params["song_id"],
-                            pl_id: request_params["pl_id"],
-                            user_id: request_params["user_id"].to_i,
-                            artists: request_params["artists"]
-                          )
-    render json: @request
+    song_id: request_params["song_id"],
+    pl_id: request_params["pl_id"],
+    user_id: request_params["user_id"].to_i,
+    artists: request_params["artists"]
+    )
+    if @request.save
+      render json: @request
+    else
+      flash.now[:error] = 'Something went wrong, sorry'
+      redirect_to playlists_path
+    end
   end
 
   def update
