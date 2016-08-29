@@ -1,5 +1,6 @@
 function emailink() {
-  $('.send-emails').on('click', function() {
+  $('.send-emails').on('click', function(evt) {
+    evt.preventDefault();
     var that = $(this);
     that.off('click');
 
@@ -20,7 +21,7 @@ function emailink() {
         error: function (xhr) {
           console.log(xhr.responseText);
           $('.addresses').val('');
-          Materialize.toast('Oops! Somthing went wrong. Please try again', 4000);
+          Materialize.toast('Oops! Somthing went wrong. Please try again later', 4000);
         }
       });
     }

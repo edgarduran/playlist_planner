@@ -34,7 +34,7 @@ function addSongToSpotify(songId, tableRow) {
     },
     error: function(xhr) {
       console.log(xhr.responseText);
-      Materialize.toast('Oops! Somthing went wrong. Please try again', 5000);
+      Materialize.toast('Song could not be added, try again later', 5000);
     }
   });
 }
@@ -56,7 +56,7 @@ function denyRequest() {
       },
       error: function(xhr) {
         console.log(xhr.responseText);
-        Materialize.toast('Oops! Somthing went wrong. Please try again', 5000);
+        Materialize.toast('Oops! Somthing went wrong. Please try again later', 5000);
       }
     });
   });
