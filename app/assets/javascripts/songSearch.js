@@ -1,6 +1,7 @@
 function songSearch() {
   $('.search').on('click', function() {
     var query = $('#query').val();
+
     if (query === "") {
       alert("You must enter a name");
     } else {
@@ -10,7 +11,9 @@ function songSearch() {
         url:  '/songs',
         data: { query: query},
         success: function(songs) {
-          $('#song-search').openModal();
+          $('#song-search').openModal({
+            complete: function() { $('.song-table tr').remove(); }
+          });
           $.each(songs.search_results, function(index, song) {
             $('#song-search').find('tbody').append(individualSong(song));
           });
@@ -18,7 +21,7 @@ function songSearch() {
         },
         error: function(xhr) {
           console.log(xhr.responseText);
-          Materialize.toast('Oops! Somthing went wrong. Please try again', 5000);
+          Materialize.toast('Messed up looking', 5000);
         }
       });
     }
@@ -37,6 +40,7 @@ function addSong() {
               song_id: $songId },
       success: function(song) {
         $('#song-search').closeModal();
+        $('.song-table tr').remove();
         var newSong = showSong(song);
         $('.pl-songs').append(newSong);
         clickEventForTrack(newSong.closest('.delete-track'));
@@ -44,7 +48,7 @@ function addSong() {
       },
       error: function(xhr) {
         console.log(xhr.responseText);
-        Materialize.toast('Oops! Somthing went wrong. Please try again', 5000);
+        Materialize.toast('Keeps tryin to add songs', 5000);
       }
     });
   });

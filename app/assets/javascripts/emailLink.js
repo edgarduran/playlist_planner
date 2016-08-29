@@ -1,5 +1,6 @@
 function emailink() {
-  $('.send-emails').on('click', function() {
+  $('.send-emails').on('click', function(evt) {
+    evt.preventDefault();
     var that = $(this);
     that.off('click');
 

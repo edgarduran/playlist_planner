@@ -34,7 +34,7 @@ function addSongToSpotify(songId, tableRow) {
     },
     error: function(xhr) {
       console.log(xhr.responseText);
-      Materialize.toast('Oops! Somthing went wrong. Please try again', 5000);
+      Materialize.toast('Adding to Spotify each time click', 5000);
     }
   });
 }

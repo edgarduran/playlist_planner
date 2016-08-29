@@ -28,11 +28,12 @@ $(document).ready(function(){
       }
     }
   );
+
   removeTracks();
   songSearch();
-  addSong();
   approveRequest();
   denyRequest();
   requestSearch();
   submitRequest();
+  addSong();
 });
