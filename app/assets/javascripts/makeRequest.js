@@ -10,7 +10,9 @@ function requestSearch() {
         url:  '/requests',
         data: { query: query},
         success: function(songs) {
-          $('#request-search').openModal();
+          $('#request-search').openModal({
+            complete: function() { $('.request-table tr').remove(); }
+          });
           $.each(songs.search_results, function(index, song) {
             $('#request-search').find('tbody').append(individualResult(song));
           });
@@ -26,7 +28,8 @@ function requestSearch() {
 }
 
 function submitRequest() {
-  $('.request-table').delegate('.add-request', 'click', function() {
+  $('.request-table').delegate('.add-request', 'click', function(evt) {
+    evt.preventDefault();
     var songId = this.id;
     var songName = $(this).parents().find('#song-name').text();
     var artists = $(this).parents().find('#song-artists').text();
@@ -42,8 +45,8 @@ function submitRequest() {
               song_id: songId },
       success: function(req) {
         $('#request-search').closeModal();
+        $('.request-table tr').remove();
          Materialize.toast('Your request has been submitted for approval', 4000);
-         location.reload();
       },
       error: function(xhr) {
         console.log(xhr.responseText);
