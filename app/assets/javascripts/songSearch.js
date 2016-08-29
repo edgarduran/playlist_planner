@@ -21,7 +21,7 @@ function songSearch() {
         },
         error: function(xhr) {
           console.log(xhr.responseText);
-          Materialize.toast('Messed up looking', 5000);
+          Materialize.toast('Sorry! Could not find your songs', 5000);
         }
       });
     }
@@ -48,7 +48,7 @@ function addSong() {
       },
       error: function(xhr) {
         console.log(xhr.responseText);
-        Materialize.toast('Keeps tryin to add songs', 5000);
+        Materialize.toast('Oops! Your song was not added. Try again later', 5000);
       }
     });
   });

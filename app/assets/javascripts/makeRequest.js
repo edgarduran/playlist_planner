@@ -18,7 +18,7 @@ function requestSearch() {
         },
         error: function(xhr) {
           console.log(xhr.responseText);
-          Materialize.toast('Oops! Somthing went wrong. Please try again', 5000);
+          Materialize.toast('Sorry! Could not find your songs', 5000);
         }
       });
     }
@@ -47,7 +47,7 @@ function submitRequest() {
       },
       error: function(xhr) {
         console.log(xhr.responseText);
-        Materialize.toast('Oops! Somthing went wrong. Please try again', 5000);
+        Materialize.toast('Sorry! Your song was not added. Please try again later', 5000);
       }
     });
   });
